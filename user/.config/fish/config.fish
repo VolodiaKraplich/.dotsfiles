@@ -1,4 +1,3 @@
-## Set values
 # Remove the default fish greeting message
 set -g fish_greeting
 
@@ -72,9 +71,6 @@ if type -q git
 end
 
 # Custom functions are defined in ~/.config/fish/functions/
-# - fish_prompt.fish: Custom shell prompt with git integration
-# - mkcd.fish: Create and navigate to directory in one command
-# - __fish_command_not_found_handler.fish: Customized error message for unknown commands
 
 ## Functions for command history
 # Functions needed for !! and !$
