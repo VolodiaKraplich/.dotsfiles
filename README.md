@@ -1,6 +1,6 @@
 # Configuration Scripts for My Dots!
 
-A comprehensive dotfiles repository designed to automate the setup and configuration of Nobara Linux systems. This repository includes Python scripts, shell configurations, and system settings that handle package management, repository configuration, system cleanup, and user-specific customizations.
+A comprehensive dotfiles repository designed to automate the setup and configuration of Linux systems. This repository includes Python scripts, shell configurations, and system settings that handle package management, repository configuration, system cleanup, and user-specific customizations.
 
 ## 🌟 Key Features
 
