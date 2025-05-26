@@ -2,7 +2,7 @@
 	defaultBranch = master
 
 [core]
-	editor = zed --wait
+	editor = zeditor --wait
 	autocrlf = input
 
 [pull]

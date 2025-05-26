@@ -41,13 +41,13 @@ if type -q eza
     alias l.="eza -a | grep -e '^\.'"                                   # show only dotfiles
     alias tree="eza --tree"
 else
-    echo "eza not found. Consider installing it with: sudo dnf install eza"
+    echo "eza not found."
 end
 
 if type -q bat
     alias cat="bat"
 else
-    echo "bat not found. Consider installing it with: sudo dnf install bat"
+    echo "bat not found."
 end
 
 alias untar="tar -xvf"     # Extract tar archives

@@ -1,60 +1,129 @@
-# Configuration Scripts for Nobara Linux - My Dots!
+# Configuration Scripts for My Dots!
 
-This repository contains a set of Python scripts designed to automate the configuration of my Nobara Linux systems. These scripts handle tasks such as package management, repository configuration, and system cleanup.
+A comprehensive dotfiles repository designed to automate the setup and configuration of Nobara Linux systems. This repository includes Python scripts, shell configurations, and system settings that handle package management, repository configuration, system cleanup, and user-specific customizations.
 
-## Overview
+## 🌟 Key Features
 
-The scripts are organized within a Python package structure (`Configuration/Nobara/`). This structure allows for modularity and easier maintenance.
+- **Fish Shell Configuration**
+  - Custom prompt with git integration
+  - Enhanced command-line utilities and aliases
+  - Modern command replacements (eza, bat)
+  - Command completion notifications
+  - Git workflow helper functions
 
-## Directory Structure
+- **Development Tools**
+  - Git configuration with sensible defaults
+  - Global gitignore patterns
+  - Code editor settings (Zed)
+
+- **System Configuration**
+  - AMD GPU optimizations
+  - ZRAM configuration
+  - Efficient backup mechanism
+
+- **Terminal Customization**
+  - Ghostty terminal configuration with Catppuccin theme
+  - Cascadia Code font
+  - Custom command not found handler
+
+## 📁 Directory Structure
 
 ```
 Configuration/
-├── Nobara/
-│   ├── __init__.py
-│   ├── cleanup.py
-│   ├── general.py
-│   ├── repos/
-│   │   ├── __init__.py
-│   │   └── terra.py
-│   └── ... other modules ...
-├── __init__.py
-├── install.sh
-└── README.md
+├── system/              # System-wide configurations
+│   ├── etc/amdgpu.conf
+│   └── etc/systemd/zram-generator.conf
+└── user/               # User-specific configurations
+    ├── .config/
+    │   ├── fastfetch/  # System information display
+    │   ├── fish/       # Fish shell configuration
+    │   ├── ghostty/    # Terminal emulator settings
+    │   └── git/        # Git configuration
+    └── patches/        # System patches
 ```
 
-*   `Configuration/`: The root directory of the Python package.
-*   `Nobara/`:  A subpackage containing Nobara-specific scripts.
-*   `__init__.py`:  Empty files that designate directories as Python packages.
-*   `cleanup.py`: Script for removing unnecessary packages.
-*   `general.py`:  Script for general system configuration tasks.
-*   `repos/`: Subpackage for managing repositories.
-*   `terra.py`: Example script related to a specific repository (Terra).
-*   `install.sh`:  Installation script to set up the environment and dependencies.
-*   `README.md`: This file, providing documentation for the project.
+## 🚀 Installation
 
+1. Clone the repository:
+   ```
+   git clone https://github.com/v1mkss/.dotsfiles.git --depth=1
+   cd .dotsfiles
+   ```
 
-## Installation
+2. Run the installation script:
+   ```
+   ./install.sh
+   ```
 
-1.  Clone the repository:
+### Installation Options
 
-    ```bash
-    git clone <https://github.com/v1mkss/.dotsfiles.git>
-    cd <repository_directory>
-    ```
+- `--no-bak`: Skip backup creation of existing files
+- `--no-sys`: Skip system file installations
 
-2.  Run the installation script:
+## 🛠 Shell Features
 
-    ```bash
-    ./install.sh
-    ```
+### Fish Shell Enhancements
 
-    The `install.sh` script sets the `PYTHONPATH` environment variable and installs any necessary dependencies. Ensure that `PYTHONPATH` is correctly set to the project root directory for proper module import resolution.
+- **Modern Command Replacements**
+  - `ls` → `eza` with icons and colors
+  - `cat` → `bat` with syntax highlighting
+  - Enhanced directory navigation aliases
 
-## Contributing
+- **Git Workflow**
+  - Streamlined git commands via `gf` function
+  - Git branch information in prompt
+  - Common git aliases
 
-Contributions are welcome!  If you have improvements or bug fixes, please submit a pull request.
+- **Utility Functions**
+  - `mkcd`: Create and enter directory
+  - `backup`: Quick file backup
+  - Command completion notifications
 
-## License
+### Terminal Configuration
 
-This project is licensed under the [MIT] License.
+- Ghostty terminal emulator
+  - Catppuccin Mocha theme
+  - Cascadia Code font family
+  - KDE integration
+
+## ⚙️ System Configurations
+
+### AMD GPU Settings
+- Force AMDGPU driver for GCN 1.0+ cards
+- Rusticl support for Radeon SI
+
+### ZRAM Configuration
+- 12GB ZRAM size
+- ZSTD compression
+- Swap priority optimization
+
+## 🔧 Development Setup
+
+### Git Configuration
+- Default branch: master
+- Auto CRLF handling
+- Rebase on pull
+- Auto remote setup
+- Custom color scheme
+
+### Global Git Ignore
+- Editor files (.idea, .vscode, .zed)
+- Build outputs
+- Dependencies
+- Environment files
+- Logs and caches
+
+## 🤝 Contributing
+
+Contributions are welcome! Please feel free to submit pull requests for any improvements or bug fixes.
+
+## 📝 License
+
+This project is licensed under the MIT License.
+
+## 🔍 Notes
+
+- The installation script automatically detects your Linux distribution and installs required dependencies
+- System configurations are backed up with `.bak` suffix before modification
+- Fish shell configurations require Fish 4.0 or newer
+- Some features require additional packages (eza, bat, git)
