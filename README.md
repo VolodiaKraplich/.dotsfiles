@@ -1,129 +1,64 @@
-# Configuration Scripts for My Dots!
+# Configuration Scripts for My Dots
 
-A comprehensive dotfiles repository designed to automate the setup and configuration of Linux systems. This repository includes Python scripts, shell configurations, and system settings that handle package management, repository configuration, system cleanup, and user-specific customizations.
+A minimal yet powerful dotfiles repository to automate Linux system setup.
 
-## 🌟 Key Features
+## 🌟 Features
 
-- **Fish Shell Configuration**
-  - Custom prompt with git integration
-  - Enhanced command-line utilities and aliases
-  - Modern command replacements (eza, bat)
-  - Command completion notifications
-  - Git workflow helper functions
+- **Fish Shell**
+  - Git-integrated prompt
+  - Aliases & modern replacements: `eza`, `bat`
+  - Git helpers (`gf`) & command notifications
 
-- **Development Tools**
-  - Git configuration with sensible defaults
-  - Global gitignore patterns
-  - Code editor settings (Zed)
+- **Dev Tools**
+  - Git defaults & global ignore patterns
+  - Editor configs (Zed)
 
-- **System Configuration**
-  - AMD GPU optimizations
-  - ZRAM configuration
-  - Efficient backup mechanism
+- **System**
+  - AMDGPU optimizations
+  - ZRAM setup (12GB, ZSTD)
+  - Backup mechanism
 
-- **Terminal Customization**
-  - Ghostty terminal configuration with Catppuccin theme
+- **Terminal**
+  - Ghostty + Catppuccin Mocha theme
   - Cascadia Code font
-  - Custom command not found handler
+  - Custom "command not found" handler
 
-## 📁 Directory Structure
+## 📁 Structure
 
 ```
 Configuration/
-├── system/              # System-wide configurations
+├── system/              # System-wide configs
 │   ├── etc/amdgpu.conf
-│   └── etc/systemd/zram-generator.conf
-└── user/               # User-specific configurations
+│   └── systemd/zram-generator.conf
+└── user/                # User-specific configs
     ├── .config/
-    │   ├── fastfetch/  # System information display
-    │   ├── fish/       # Fish shell configuration
-    │   ├── ghostty/    # Terminal emulator settings
-    │   └── git/        # Git configuration
-    └── patches/        # System patches
+    │   ├── fastfetch
+    │   ├── fish
+    │   ├── ghostty
+    │   └── git
+    └── patches/
 ```
 
 ## 🚀 Installation
 
-1. Clone the repository:
-   ```
-   git clone https://github.com/v1mkss/.dotsfiles.git --depth=1
-   cd .dotsfiles
-   ```
+```bash
+git clone https://github.com/v1mkss/.dotsfiles.git --depth=1
+cd .dotsfiles
+./install.sh
+```
 
-2. Run the installation script:
-   ```
-   ./install.sh
-   ```
+**Options:**  
+`--no-bak` – skip backups  
+`--no-sys` – skip system configs
 
-### Installation Options
+## ⚙️ Requirements
 
-- `--no-bak`: Skip backup creation of existing files
-- `--no-sys`: Skip system file installations
-
-## 🛠 Shell Features
-
-### Fish Shell Enhancements
-
-- **Modern Command Replacements**
-  - `ls` → `eza` with icons and colors
-  - `cat` → `bat` with syntax highlighting
-  - Enhanced directory navigation aliases
-
-- **Git Workflow**
-  - Streamlined git commands via `gf` function
-  - Git branch information in prompt
-  - Common git aliases
-
-- **Utility Functions**
-  - `mkcd`: Create and enter directory
-  - `backup`: Quick file backup
-  - Command completion notifications
-
-### Terminal Configuration
-
-- Ghostty terminal emulator
-  - Catppuccin Mocha theme
-  - Cascadia Code font family
-  - KDE integration
-
-## ⚙️ System Configurations
-
-### AMD GPU Settings
-- Force AMDGPU driver for GCN 1.0+ cards
-- Rusticl support for Radeon SI
-
-### ZRAM Configuration
-- 12GB ZRAM size
-- ZSTD compression
-- Swap priority optimization
-
-## 🔧 Development Setup
-
-### Git Configuration
-- Default branch: master
-- Auto CRLF handling
-- Rebase on pull
-- Auto remote setup
-- Custom color scheme
-
-### Global Git Ignore
-- Editor files (.idea, .vscode, .zed)
-- Build outputs
-- Dependencies
-- Environment files
-- Logs and caches
+- Fish shell 4.0+
+- Deps: `eza`, `bat`, `git`
 
 ## 🤝 Contributing
-
-Contributions are welcome! Please feel free to submit pull requests for any improvements or bug fixes.
+Pull requests are welcome!
 
 ## 📝 License
 
-This project is licensed under the MIT License.
-
-## 🔍 Notes
-
-- The installation script automatically detects your Linux distribution and installs required dependencies
-- System configurations are backed up with `.bak` suffix before modification
-- Fish shell configurations require Fish 4.0 or newer
-- Some features require additional packages (eza, bat, git)
+[MIT License](./LICENSE)
