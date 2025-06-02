@@ -1,7 +1,6 @@
 import os
 import sys
 import subprocess
-import configparser
 import shutil
 import argparse
 
@@ -50,111 +49,119 @@ def setup_python():
     return python_bin
 
 
-def copy_user_configs(user_config_dir, no_bak):
-    """Copies user configuration files, handling git config specially."""
+def _get_user_config_dest():
+    """Determines user's home directory and destination .config path."""
     home_dir = os.environ.get("SUDO_USER_HOME") or os.environ.get("HOME")
     if not home_dir:
         log_error("Could not determine user's home directory.")
         sys.exit(1)
-    config_dir_dest = os.path.join(home_dir, ".config")
+    return os.path.join(home_dir, ".config")
 
-    # Ensure destination config directory exists
-    if not os.path.exists(config_dir_dest):
+def _ensure_dir_exists(directory):
+    """Ensures a directory exists, creating it if necessary."""
+    if not os.path.exists(directory):
+        log_info(f"Creating directory: {directory}")
         try:
-            os.makedirs(config_dir_dest)
-            log_info(f"Created directory: {config_dir_dest}")
+            os.makedirs(directory)
         except OSError as e:
-            log_error(f"Error creating directory {config_dir_dest}: {e}")
+            log_error(f"Error creating directory {directory}: {e}")
             sys.exit(1)
 
-    # Handle git config specially
+def _extract_git_sections(backup_file_path, target_sections):
+    """Extracts specific sections ([user], [tag], [commit]) from a git config file."""
+    extracted_content = []
+    log_info(f"Extracting specific sections from backup {backup_file_path}")
+    try:
+        with open(backup_file_path, "r") as f_bak:
+            in_target_section = False
+            for line in f_bak:
+                stripped_line = line.strip()
+                if stripped_line.startswith("[") and stripped_line.endswith("]"):
+                    # It's a section header
+                    if stripped_line in target_sections:
+                        in_target_section = True
+                        extracted_content.append(line) # Keep original line with newline
+                    else:
+                        in_target_section = False
+                elif in_target_section:
+                    # It's content within a target section
+                    extracted_content.append(line)
+    except IOError as e:
+        log_error(f"Error reading backup file {backup_file_path}: {e}")
+        # Continue even if reading backup fails
+        pass
+    return extracted_content
+
+def _handle_git_config(user_config_dir, config_dir_dest, no_bak):
+    """Handles the specific logic for merging/copying git config.
+       Extracts user sections from existing config, overwrites with dotfiles,
+       and appends extracted user sections."""
     dotfiles_git_config = os.path.join(user_config_dir, "git", "config")
     user_git_config_dir = os.path.join(config_dir_dest, "git")
     user_git_config = os.path.join(user_git_config_dir, "config")
     user_git_config_bak = os.path.join(user_git_config_dir, "config.bak")
+    target_sections = {"[user]", "[tag]", "[commit]"}
 
-    # Ensure the destination git config directory exists
-    if not os.path.exists(user_git_config_dir):
-        try:
-            os.makedirs(user_git_config_dir)
-            log_info(f"Created directory: {user_git_config_dir}")
-        except OSError as e:
-            log_error(f"Error creating directory {user_git_config_dir}: {e}")
-            sys.exit(1)
+    _ensure_dir_exists(user_git_config_dir)
 
-    # Backup the existing git config, if it exists
+    extracted_content = []
     if os.path.isfile(user_git_config):
         log_info(f"Existing git config found at {user_git_config}.")
         if not no_bak:
             log_info(f"Backing up {user_git_config} to {user_git_config_bak}")
             try:
                 shutil.copy2(user_git_config, user_git_config_bak)
-                # log_info("Backup successful.") # Removed this log
-                pass
+                # Extract [user], [tag], and [commit] sections from backup IF backup succeeded
+                # The existence check for the backup file is removed as shutil.copy2 succeeding implies existence on success
+                log_info(f"Attempting to extract sections from backup {user_git_config_bak}")
+                extracted_content = _extract_git_sections(user_git_config_bak, target_sections)
             except IOError as e:
-                log_error(f"Error backing up {user_git_config}: {e}")
-                # Decide if this is a fatal error or just warn
-                pass # Continue installation even if backup fails
+                log_error(f"Error backing up {user_git_config} or extracting sections: {e}")
+                # Continue installation even if backup/extraction fails
+                # extracted_content remains [] if backup failed or extraction failed
+
     else:
-        log_info(f"No existing git config found.")
-
-
-    # Extract [user], [tag], and [commit] sections from backup
-    extracted_content = []
-    in_target_section = False
-    target_sections = {"[user]", "[tag]", "[commit]"} # Use a set for faster lookup
-
-    if os.path.exists(user_git_config_bak):
-         log_info(f"Extracting specific sections from backup {user_git_config_bak}")
-         try:
-            with open(user_git_config_bak, "r") as f_bak:
-                for line in f_bak:
-                    stripped_line = line.strip()
-                    if stripped_line.startswith("[") and stripped_line.endswith("]"):
-                        # It's a section header
-                        if stripped_line in target_sections:
-                            in_target_section = True
-                            extracted_content.append(line) # Keep original line with newline
-                            # log_info(f"  Extracted section header: {stripped_line}") # Removed this log
-                            pass
-                        else:
-                            in_target_section = False
-                    elif in_target_section:
-                        # It's content within a target section
-                        extracted_content.append(line)
-                        # Optional: log each line extracted
-                        # log_info(f"  Extracted line: {stripped_line}")
-         except IOError as e:
-             log_error(f"Error reading backup file {user_git_config_bak}: {e}")
-         # log_info(f"Extraction complete. {len(extracted_content)} lines extracted.") # Removed this log
-         pass
-
+        log_info("No existing git config found.")
 
     # Overwrite destination with new config from dotfiles, creating if it does not exist
-    log_info(f"Overwriting/Creating {user_git_config} with new config from {dotfiles_git_config}")
-    try:
-        shutil.copy2(dotfiles_git_config, user_git_config)
-        # log_info("Overwrite/Create successful.") # Removed this log
-        pass
-    except IOError as e:
-        log_error(f"Error overwriting/creating {user_git_config}: {e}")
-        # If overwrite fails, exit
-        sys.exit(1)
+    if os.path.exists(dotfiles_git_config):
+        log_info(f"Overwriting/Creating {user_git_config} with new config from {dotfiles_git_config}")
+        try:
+            shutil.copy2(dotfiles_git_config, user_git_config)
+        except IOError as e:
+            log_error(f"Error overwriting/creating {user_git_config}: {e}")
+            # If overwrite fails, exit
+            sys.exit(1)
+    else:
+        log_info(f"Dotfiles git config not found at {dotfiles_git_config}. Skipping overwrite.")
+        # If dotfiles git config doesn't exist, ensure the destination file exists
+        # if we need to append extracted content to it.
+        if extracted_content and not os.path.exists(user_git_config):
+             log_info(f"Creating empty destination git config file for appending: {user_git_config}")
+             try:
+                 open(user_git_config, 'a').close() # Create empty file
+             except IOError as e:
+                 log_error(f"Error creating empty file {user_git_config}: {e}")
+                 # This might be a fatal error if we need to append but can't create the file
+                 sys.exit(1) # Making file creation fatal if needed for append
 
     # Append extracted content
     if extracted_content:
-        log_info(f"Appending extracted sections to {user_git_config}")
-        try:
-            with open(user_git_config, "a") as f_user:
-                f_user.writelines(extracted_content)
-            # log_info("Append successful.") # Removed this log
-            pass
-        except IOError as e:
-            log_error(f"Error appending to {user_git_config}: {e}")
-            pass # Continue even if appending fails
+        # Check if the destination file exists before attempting to append
+        if os.path.exists(user_git_config):
+            log_info(f"Appending {len(extracted_content)} extracted lines to {user_git_config}")
+            try:
+                with open(user_git_config, "a") as f_user:
+                    f_user.writelines(extracted_content)
+            except IOError as e:
+                log_error(f"Error appending to {user_git_config}: {e}")
+                pass # Continue even if appending fails
+        else:
+             # This case indicates a logic error or file disappearing, but log for diagnosis
+             log_error(f"Attempted to append extracted content, but destination file {user_git_config} does not exist.")
 
-
-    # Copy the rest of the user config files (excluding git)
+def _copy_remaining_configs(user_config_dir, config_dir_dest):
+    """Copies user config files excluding the git directory."""
     log_info(f"Copying remaining user config files from {user_config_dir} to {config_dir_dest}...")
     if os.path.isdir(user_config_dir):
          for item in os.listdir(user_config_dir):
@@ -178,7 +185,14 @@ def copy_user_configs(user_config_dir, no_bak):
     else:
         log_info(f"User config directory not found: {user_config_dir}")
 
-    log_info(f"Finished copying user config contents.")
+
+def copy_user_configs(user_config_dir, no_bak):
+    """Copies user configuration files, handling git config specially."""
+    config_dir_dest = _get_user_config_dest()
+    _ensure_dir_exists(config_dir_dest)
+    _handle_git_config(user_config_dir, config_dir_dest, no_bak)
+    _copy_remaining_configs(user_config_dir, config_dir_dest)
+    log_info("Finished copying user config contents.")
 
 
 def run_patches(user_patches_dir):
@@ -200,10 +214,11 @@ def run_patches(user_patches_dir):
             patch = os.path.join(user_patches_dir, filename)
             # Exclude the old merge_git_config.py script and ensure it's a python file
             if os.path.isfile(patch) and filename != "merge_git_config.py" and patch.lower().endswith(".py"):
+                # Removed duplicated log_info and the surrounding unnecessary try block
                 log_info(f"Running patch: {patch}")
                 try:
-                    # Use the determined python_bin
-                    subprocess.check_call([python_bin, patch])
+                    # Use the determined python_bin, explicitly passing the environment
+                    subprocess.check_call([python_bin, patch], env=os.environ)
                 except subprocess.CalledProcessError as e:
                     log_error(f"Error running patch {patch}: {e}")
     else:

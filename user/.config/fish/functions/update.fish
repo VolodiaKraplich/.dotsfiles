@@ -14,12 +14,12 @@ function update --description "Update system packages based on available package
   else if type -q pacman
     set pkg_manager "pacman"
     set update_cmd "sudo pacman -Syu"
-  else if type -q dnf
-    set pkg_manager "dnf"
-    set update_cmd "sudo dnf up -y"
   else if type -q nobara-sync
     set pkg_manager "nobara-sync"
     set update_cmd "nobara-sync cli"
+  else if type -q dnf
+    set pkg_manager "dnf"
+    set update_cmd "sudo dnf up -y"
   end
 
   # Execute the update command if one was found, otherwise notify the user

@@ -39,10 +39,8 @@ function cleanup --description "Clean system packages cache and remove orphaned 
     end
     # For Nobara: use nobara-sync for cache clean and dnf for autoremove
   else if type -q nobara-sync
-    nobara-sync clean-dnf
-    # Assuming Nobara still uses dnf for autoremove of explicitly installed packages
     sudo dnf autoremove -y
-    # For Fedora-based systems: use dnf
+  # For Fedora-based systems: use dnf
   else if type -q dnf
     sudo dnf autoremove -y
     sudo dnf clean all

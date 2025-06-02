@@ -139,6 +139,11 @@ main() {
     log "Detected CachyOS. Automatically skipping system files installation"
   fi
 
+  if [[ "$DISTRO_ID" == "nobara" ]]; then
+    NO_SYS=true
+    log "Detected Nobara. Automatically skipping system files installation"
+  fi
+
   # Setup Python
   setup_python
 
