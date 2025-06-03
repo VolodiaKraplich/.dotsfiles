@@ -72,6 +72,10 @@ def _copy_remaining_configs(source_dir, dest_dir):
                     log_info(f"Copying directory {s} to {d}")
                     shutil.copytree(s, d, dirs_exist_ok=True)
                 elif os.path.isfile(s):
+                    # Check if the file is ~/.config/git/config and if it exists, skip copying
+                    if item == "config" and os.path.basename(os.path.dirname(s)) == "git" and os.path.exists(os.path.join(dest_dir, "git", "config")):
+                        log_info(f"Skipping {s} because {os.path.join(dest_dir, 'git', 'config')} already exists.")
+                        continue
                     log_info(f"Copying file {s} to {d}")
                     shutil.copy2(s, d)
             except Exception as e:
