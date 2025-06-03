@@ -17,8 +17,6 @@ function cleanup --description "Clean system packages cache and remove orphaned 
       echo "No orphaned packages found."
     end
   else if type -q yay
-    echo "Detected yay package manager."
-    echo "Running yay -Scc (clean cache)..."
     yay -Scc
     # yay -Qtdq lists orphaned AUR packages, pacman -Qtdq lists orphaned repo packages
     # yay -Rns can remove both types
@@ -40,6 +38,7 @@ function cleanup --description "Clean system packages cache and remove orphaned 
     # For Nobara: use nobara-sync for cache clean and dnf for autoremove
   else if type -q nobara-sync
     sudo dnf autoremove -y
+    sudo dnf clean all
   # For Fedora-based systems: use dnf
   else if type -q dnf
     sudo dnf autoremove -y
