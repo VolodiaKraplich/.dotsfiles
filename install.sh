@@ -63,7 +63,7 @@ install_python() {
     opensuse*|suse)
       sudo zypper install -y python3
       ;;
-    arch|manjaro|endeavouros)
+    arch|manjaro|endeavouros|cachyos)
       sudo pacman -Sy --noconfirm python
       ;;
     *)
@@ -137,11 +137,6 @@ main() {
   if [[ "$DISTRO_ID" == "cachyos" ]]; then
     NO_SYS=true
     log "Detected CachyOS. Automatically skipping system files installation"
-  fi
-
-  if [[ "$DISTRO_ID" == "nobara" ]]; then
-    NO_SYS=true
-    log "Detected Nobara. Automatically skipping system files installation"
   fi
 
   # Setup Python

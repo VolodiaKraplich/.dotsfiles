@@ -8,7 +8,6 @@ def log_error(message):
     print(f"ERROR: {message}", file=sys.stderr)
 
 # Determine the user's home directory dynamically
-# This script might be run via sudo, so check SUDO_USER
 user_home = os.environ.get("SUDO_USER_HOME") or os.environ.get("HOME")
 if not user_home:
     log_error("Could not determine user's home directory.")
@@ -31,7 +30,6 @@ if not os.path.exists(config_dir):
         log_info(f"Created directory: {config_dir}")
     except OSError as e:
         log_error(f"Error creating directory {config_dir}: {e}")
-        # Decide if this is a fatal error. For a config file, it might be.
         sys.exit(1)
 
 
@@ -45,7 +43,6 @@ except IOError as e:
     log_error(f"Error reading file {config_file}: {e}")
     sys.exit(1)
 
-# --- Logic to add/update keys ---
 # Find the [General] section
 general_section_index = -1
 for i, line in enumerate(lines):
@@ -56,14 +53,12 @@ for i, line in enumerate(lines):
 # If [General] section doesn't exist, add it at the end
 if general_section_index == -1:
     log_info(f"'{section}' section not found, adding it.")
-    # Ensure there's a newline before the new section if file is not empty
     if lines and not lines[-1].endswith('\n'):
         lines.append('\n')
     lines.append(f"{section}\n")
-    general_section_index = len(lines) - 1 # Index of the new section header
+    general_section_index = len(lines) - 1
 
 # Prepare lines for insertion within the [General] section
-# We need to find where the section ends or where to insert keys
 insert_index = general_section_index + 1
 while insert_index < len(lines) and not lines[insert_index].strip().startswith('['):
     insert_index += 1
@@ -88,10 +83,10 @@ if key1 in current_section_keys:
 else:
     lines.insert(insert_index, f"{key1}={value1}\n")
     log_info(f"Added line: {key1}={value1}")
-    insert_index += 1 # Adjust insert index for the next key
+    insert_index += 1
 
 # Update or add key2
-if key2 in current_section_keys and key2 != key1: # Ensure we don't process key1 again if it was added
+if key2 in current_section_keys and key2 != key1:
      if key2 in current_section_keys:
         old_line = current_section_keys[key2]['line']
         new_line = f"{key2}={value2}\n"
@@ -103,7 +98,6 @@ if key2 in current_section_keys and key2 != key1: # Ensure we don't process key1
 else:
     lines.insert(insert_index, f"{key2}={value2}\n")
     log_info(f"Added line: {key2}={value2}")
-    # insert_index += 1 # Not needed as this is the last key
 
 
 # Write the modified content back to the file
