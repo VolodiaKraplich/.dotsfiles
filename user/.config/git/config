@@ -2,7 +2,7 @@
 	defaultBranch = master
 
 [core]
-	editor = zeditor --wait
+	editor = helix
 	autocrlf = input
 
 [pull]

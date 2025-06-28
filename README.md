@@ -54,6 +54,7 @@ cd .dotsfiles
 ## ⚙️ Requirements
 
 - Fish shell 4.0+
+- Starship
 - Deps: `eza`, `bat`, `git`
 
 ## 🤝 Contributing
