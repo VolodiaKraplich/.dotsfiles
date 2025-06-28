@@ -1,79 +1,95 @@
-# Remove the default fish greeting message
-set -g fish_greeting
+# ------------------------------------------------------------------------------
+# Starship Prompt Initialization
+# ------------------------------------------------------------------------------
+starship init fish | source
+# ------------------------------------------------------------------------------
+# General Fish Shell Settings
+# ------------------------------------------------------------------------------
 
-# Disable fish greeting message
-function fish_greeting
-end
+# Load Catppuccin Mocha theme
+set -g fish_color_normal cdd6f4
+set -g fish_color_command 89b4fa
+set -g fish_color_param f2cdcd
+set -g fish_color_keyword f38ba8
+set -g fish_color_quote a6e3a1
+set -g fish_color_redirection f5c2e7
+set -g fish_color_end fab387
+set -g fish_color_comment 7f849c
+set -g fish_color_error f38ba8
+set -g fish_color_gray 6c7086
+set -g fish_color_selection --background=313244
+set -g fish_color_search_match --background=313244
+set -g fish_color_option a6e3a1
+set -g fish_color_operator f5c2e7
+set -g fish_color_escape eba0ac
+set -g fish_color_autosuggestion 6c7086
+set -g fish_color_cancel f38ba8
+set -g fish_color_cwd f9e2af
+set -g fish_color_user 94e2d5
+set -g fish_color_host 89b4fa
+set -g fish_color_host_remote a6e3a1
+set -g fish_color_status f38ba8
+set -g fish_pager_color_progress 6c7086
+set -g fish_pager_color_prefix f5c2e7
+set -g fish_pager_color_completion cdd6f4
+set -g fish_pager_color_description 6c7086
 
-# Format man pages
-set -x MANROFFOPT "-c"
+# Format man pages with bat for colored output
 set -x MANPAGER "sh -c 'col -bx | bat -l man -p'"
 
-# Prevent history sharing between host and containers
+# Isolate command history for containers to avoid polluting the host's history
 if test "$container" = "podman" -o "$container" = "docker" -o -n "$DISTROBOX_ENTER_PATH"
     set -g fish_history ""
 end
 
-# Configure fish color scheme
-set -g fish_color_normal normal
-set -g fish_color_command blue
-set -g fish_color_param cyan
-set -g fish_color_error red
-set -g fish_color_quote green
-set -g fish_color_operator yellow
+# ------------------------------------------------------------------------------
+# Aliases (Shortcuts for common commands)
+# ------------------------------------------------------------------------------
 
-# Define convenient shell aliases
 # Directory Navigation
-alias ".."="cd .."
-alias "..."="cd ../.."
-alias "...."="cd ../../.."
-alias "....."="cd ../../../.."
-alias "......"="cd ../../../../.."
+alias .. "cd .."
+alias ... "cd ../.."
+alias .... "cd ../../.."
 
-# Modern Unix Command Replacements
-# First check if these packages are installed
+# Modern Unix command replacements
 if type -q eza
-    alias ls="eza -al --color=always --group-directories-first --icons" # preferred listing
-    alias l="eza -l --color=always --group-directories-first --icons"   # long format
-    alias la="eza -a --color=always --group-directories-first --icons"  # all files and dirs
-    alias lt="eza -aT --color=always --group-directories-first --icons" # tree listing
-    alias l.="eza -a | grep -e '^\.'"                                   # show only dotfiles
-    alias tree="eza --tree"
-else
-    echo "eza not found."
+    alias ls "eza -al --color=always --group-directories-first --icons" # full listing
+    alias l "eza -l --color=always --group-directories-first --icons"    # long format
+    alias la "eza -a --color=always --group-directories-first --icons"   # all files
+    alias lt "eza -aT --color=always --group-directories-first --icons"  # tree view
+    alias tree "eza --tree"
 end
 
 if type -q bat
-    alias cat="bat"
-else
-    echo "bat not found."
+    alias cat "bat --theme=Catppuccin-mocha"
 end
 
-alias untar="tar -xvf"     # Extract tar archives
-alias tarnow="tar -acf"    # Create a tar archive
-alias grep="grep --color=auto"
-alias egrep="egrep --color=auto"
-alias fgrep="fgrep --color=auto"
-alias wget="wget -c"       # Resume wget by default
+# Other useful aliases
+alias untar "tar -xvf"
+alias tarnow "tar -acf"
+alias grep "grep --color=auto"
+alias wget "wget -c"
 
-# Git shortcuts
+# Git aliases
 if type -q git
-    alias g="git"
-    alias ga="git add"
-    alias gc="git commit"
-    alias gco="git checkout"
-    alias gd="git diff"
-    alias gs="git status"
-    alias gl="git log --oneline --graph --decorate"
-    alias gp="git push"
-    alias gpull="git pull"
-    alias gb="git branch"
+    alias g "git"
+    alias ga "git add"
+    alias gc "git commit"
+    alias gco "git checkout"
+    alias gd "git diff"
+    alias gs "git status"
+    alias gl "git log --oneline --graph --decorate"
+    alias gp "git push"
+    alias gpull "git pull"
+    alias gb "git branch"
 end
 
-# Custom functions are defined in ~/.config/fish/functions/
+# ------------------------------------------------------------------------------
+# Functions
+# ------------------------------------------------------------------------------
 
-## Functions for command history
-# Functions needed for !! and !$
+# Function for `!!` (repeat previous command) and `!$` (last argument)
+# This brings useful functionality from Bash to Fish.
 function __history_previous_command
   switch (commandline -t)
     case "!"
@@ -93,7 +109,7 @@ function __history_previous_command_arguments
     end
 end
 
-# Setup key bindings for history
+# Bind the functions to the ! and $ keys
 if [ "$fish_key_bindings" = "fish_vi_key_bindings" ]
     bind -Minsert ! __history_previous_command
     bind -Minsert '$' __history_previous_command_arguments
@@ -102,32 +118,23 @@ else
     bind '$' __history_previous_command_arguments
 end
 
-# Enhanced history display with timestamps
+# Display timestamps in command history
 function history
     builtin history --show-time='%F %T '
 end
 
-# Simple backup function
+# Simple function to create a backup of a file
 function backup --argument filename
     cp $filename $filename.bak
 end
 
-# Improved copy function
-function copy
-    set count (count $argv | tr -d \n)
-    if test "$count" = 2; and test -d "$argv[1]"
-        set from (echo $argv[1] | string trim -r -c/)
-        set to (echo $argv[2])
-        command cp -r $from $to
-    else
-        command cp $argv
-    end
-end
+# ------------------------------------------------------------------------------
+# Plugin Settings (e.g., "done")
+# ------------------------------------------------------------------------------
 
-# Configure "done" plugin settings (command completion notifications)
-# The "done" plugin (in conf.d/done.fish) sends desktop notifications when long-running commands complete
-set -g __done_min_cmd_duration 10000       # Show notification after 10 seconds
-set -g __done_exclude '^git (?!push|pull|fetch)'  # Don't notify for most git commands except push/pull/fetch
-set -g __done_notify_sound 0               # Don't play sound with notifications
+# Settings for the "done" plugin (desktop notifications for long commands)
+set -g __done_min_cmd_duration 10000       # Notify after 10 seconds
+set -g __done_exclude '^git (?!push|pull|fetch)'  # Don't notify for most git commands
+set -g __done_notify_sound 0               # No sound with notifications
 set -g __done_notification_duration 3000   # How long notifications stay on screen (ms)
 set -U __done_notification_urgency_level low # Set urgency level to low

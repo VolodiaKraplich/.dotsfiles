@@ -1,0 +1,120 @@
+# ~/.config/starship.toml
+
+# Link to schema for autocomplete and validation in your editor
+"$schema" = 'https://starship.rs/config-schema.json'
+
+# General prompt format.
+# Defines the layout of your prompt.
+# Only $username and $directory are shown on the first line.
+# Other modules (git, aws, k8s, etc.) are implicitly excluded from this format.
+palette = "catppuccin_mocha"
+format = "$username$directory$line_break[└─>$character](bold green)"
+
+# Do not add an empty line before the prompt
+add_newline = false
+
+# Symbol for continuing multi-line commands
+continuation_prompt = "[ ](bold green)"
+
+# --- Modules ---
+# Input symbol at the end of the prompt
+[character]
+success_symbol = "[>](bold green)"
+error_symbol = "[>](bold red)"
+
+# User and hostname
+[username]
+style_user = "bold mauve"
+style_root = "bold red"
+format = "[$user]($style) "
+show_always = true
+
+[hostname]
+disabled = true
+
+# Directory
+[directory]
+style = "bold blue"
+truncation_length = 3
+truncation_symbol = "…/"
+read_only = " 🔒"
+read_only_style = "red"
+format = "in [$path]($style)[$read_only]($read_only_style)"
+
+# Git information
+[git_branch]
+style = "bold yellow"
+format = "on [$branch]($style) "
+
+[git_status]
+style = "bold yellow"
+staged = '[++\($count\)](green) '
+format = '([$ahead_behind]($style))'
+
+# Command duration
+[cmd_duration]
+min_time = 5_000                     # Show if the command took longer than 5 seconds
+style = "bold yellow"
+format = "took [$duration]($style) "
+
+# --- Built-in modules for environments ---
+
+# AWS
+[aws]
+symbol = " "
+style = "bold yellow"
+format = "on [$symbol$profile]($style) "
+
+# Kubernetes
+[kubernetes]
+symbol = " "
+style = "bold yellow"
+format = 'on [$symbol$context\($namespace\)]($style) '
+
+# Containers
+[container]
+symbol = " "
+style = "bold yellow"
+format = 'in [$symbol$name]($style) '
+
+# Time
+[time]
+disabled = true
+style = "bold text"
+format = "at [$time]($style) "
+
+# Disable the package module
+[package]
+disabled = true
+
+# Disable the Rust module
+[rust]
+disabled = true
+
+[palettes.catppuccin_mocha]
+rosewater = "#f5e0dc"
+flamingo = "#f2cdcd"
+pink = "#f5c2e7"
+mauve = "#cba6f7"
+red = "#f38ba8"
+maroon = "#eba0ac"
+peach = "#fab387"
+yellow = "#f9e2af"
+green = "#a6e3a1"
+teal = "#94e2d5"
+sky = "#89dceb"
+sapphire = "#74c7ec"
+blue = "#89b4fa"
+lavender = "#b4befe"
+text = "#cdd6f4"
+subtext1 = "#bac2de"
+subtext0 = "#a6adc8"
+overlay2 = "#9399b2"
+overlay1 = "#7f849c"
+overlay0 = "#6c7086"
+surface2 = "#585b70"
+surface1 = "#45475a"
+surface0 = "#313244"
+base = "#1e1e2e"
+mantle = "#181825"
+crust = "#11111b"
