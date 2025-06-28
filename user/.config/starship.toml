@@ -1,5 +1,3 @@
-# ~/.config/starship.toml
-
 # Link to schema for autocomplete and validation in your editor
 "$schema" = 'https://starship.rs/config-schema.json'
 

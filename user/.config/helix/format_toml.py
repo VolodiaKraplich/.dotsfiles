@@ -1,6 +1,4 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-
 """
 A robust, idempotent script to format a Helix `languages.toml` file.
 
@@ -159,7 +157,7 @@ def main():
         with open(input_file, 'w', encoding='utf-8') as f:
             f.write(formatted_content)
 
-        print(f"✅ Formatting complete! Original file backed up to '{backup_file.name}'.")
+        print(f"✅ Formatting complete!.")
 
         # Remove the backup file after writing the formatted content
         if backup_file.is_file():
