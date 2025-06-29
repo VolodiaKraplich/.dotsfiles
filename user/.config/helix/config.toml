@@ -2,12 +2,19 @@ theme = "catppuccin_mocha"
 
 [editor]
 line-number = "absolute"
+bufferline = "multiple"
 mouse = true
+scrolloff = 999
+
+[editor.soft-wrap]
+enable = true
 
 [editor.cursor-shape]
 insert = "bar"
 normal = "block"
 select = "underline"
 
-[editor.file-picker]
-hidden = false
+[editor.indent-guides]
+render = true
+character = "|"
+skip-levels = 1
