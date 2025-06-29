@@ -11,7 +11,7 @@ A minimal yet powerful dotfiles repository to automate Linux system setup.
 
 - **Dev Tools**
   - Git defaults & global ignore patterns
-  - Editor configs (Zed)
+  - Editor configs (Helix Editor)
 
 - **System**
   - AMDGPU optimizations
@@ -20,7 +20,7 @@ A minimal yet powerful dotfiles repository to automate Linux system setup.
 
 - **Terminal**
   - Ghostty + Catppuccin Mocha theme
-  - Cascadia Code font
+  - Fira Code
   - Custom "command not found" handler
 
 ## 📁 Structure
@@ -35,14 +35,16 @@ Configuration/
     │   ├── fastfetch
     │   ├── fish
     │   ├── ghostty
-    │   └── git
+    │   ├── git
+    │   ├── helix
+    │   └── starship.toml
     └── patches/
 ```
 
 ## 🚀 Installation
 
 ```bash
-git clone https://github.com/v1mkss/.dotsfiles.git --depth=1
+git clone https://github.com/VolodiaKraplich/.dotsfiles.git --depth=1
 cd .dotsfiles
 ./install.sh
 ```
@@ -54,8 +56,7 @@ cd .dotsfiles
 ## ⚙️ Requirements
 
 - Fish shell 4.0+
-- Starship
-- Deps: `eza`, `bat`, `git`
+- Deps: `eza`, `bat`, `git`, `starship`
 
 ## 🤝 Contributing
 Pull requests are welcome!
