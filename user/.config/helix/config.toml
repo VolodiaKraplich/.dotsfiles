@@ -11,6 +11,7 @@ idle-timeout = 0
 line-number = "absolute"
 mouse = true
 scrolloff = 999
+true-color = true
 
 [editor.cursor-shape]
 insert = "bar"
