@@ -6,6 +6,11 @@ starship init fish | source
 # General Fish Shell Settings
 # ------------------------------------------------------------------------------
 
+# Disable fish greeting message
+function fish_greeting
+end
+set -g fish_greeting
+
 # Load Catppuccin Mocha theme
 set -g fish_color_normal cdd6f4
 set -g fish_color_command 89b4fa
