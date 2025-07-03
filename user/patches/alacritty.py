@@ -18,9 +18,9 @@ if not user_home:
 config_file = os.path.join(user_home, ".config", "kdeglobals")
 section = "[General]"
 key1 = "TerminalApplication"
-value1 = "ghostty"
+value1 = "alacritty"
 key2 = "TerminalService"
-value2 = "ghostty.desktop"
+value2 = "alacritty.desktop"
 
 log_info(f"Patching configuration file: {config_file}")
 
