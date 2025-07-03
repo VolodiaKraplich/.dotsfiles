@@ -66,7 +66,7 @@ if type -q eza
 end
 
 if type -q bat
-    alias cat "bat --theme=Catppuccin-mocha"
+    alias cat bat
 end
 
 # Other useful aliases
