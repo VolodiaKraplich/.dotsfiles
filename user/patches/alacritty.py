@@ -20,7 +20,7 @@ section = "[General]"
 key1 = "TerminalApplication"
 value1 = "alacritty"
 key2 = "TerminalService"
-value2 = "alacritty.desktop"
+value2 = "Alacritty.desktop"
 
 log_info(f"Patching configuration file: {config_file}")
 
