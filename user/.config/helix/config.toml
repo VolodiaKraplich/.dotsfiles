@@ -8,10 +8,15 @@ theme = "catppuccin_mocha"
 bufferline = "multiple"
 color-modes = true
 idle-timeout = 0
-line-number = "absolute"
+line-number = "relative"
 mouse = true
 scrolloff = 999
 true-color = true
+
+[editor.auto-save]
+focus-lost = true
+after-delay.enable = true
+after-delay.timeout = 1
 
 [editor.cursor-shape]
 insert = "bar"
