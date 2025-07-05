@@ -3,60 +3,6 @@
 # =============================================================================
 
 [[language]]
-name = "bash"
-scope = "source.shell"
-injection-regex = "(shell|bash|zsh|sh|fish)"
-file-types = [
-  "sh",
-  "bash",
-  "fish",
-  "ash",
-  "dash",
-  "ksh",
-  "mksh",
-  "zsh",
-  "zshenv",
-  "zlogin",
-  "zlogout",
-  "zprofile",
-  "zshrc",
-  "eclass",
-  "ebuild",
-  "bazelrc",
-  "Renviron",
-  "zsh-theme",
-  "cshrc",
-  "tcshrc",
-  "bashrc_Apple_Terminal",
-  "zshrc_Apple_Terminal",
-  { glob = "i3/config" },
-  { glob = "sway/config" },
-  { glob = "tmux.conf" },
-  { glob = ".bash_history" },
-  { glob = ".bash_login" },
-  { glob = ".bash_logout" },
-  { glob = ".bash_profile" },
-  { glob = ".bashrc" },
-  { glob = ".profile" },
-  { glob = ".zshenv" },
-  { glob = ".zlogin" },
-  { glob = ".zlogout" },
-  { glob = ".zprofile" },
-  { glob = ".zshrc" },
-  { glob = ".zimrc" },
-  { glob = "APKBUILD" },
-  { glob = ".bash_aliases" },
-  { glob = ".Renviron" },
-  { glob = ".xprofile" },
-  { glob = ".xsession" },
-  { glob = ".xsessionrc" },
-  { glob = ".yashrc" },
-  { glob = ".yash_profile" },
-  { glob = ".hushlogin" },
-]
-indent = { tab-width = 2, unit = "  " }
-
-[[language]]
 name = "rust"
 scope = "source.rust"
 injection-regex = "rs|rust"
@@ -64,6 +10,7 @@ file-types = ["rs"]
 roots = ["Cargo.toml", "Cargo.lock"]
 shebangs = ["rust-script", "cargo"]
 auto-format = true
+formatter = { command = "rustfmt" }
 comment-tokens = ["//", "///", "//!"]
 block-comment-tokens = [
   { start = "/*", end = "*/" },
@@ -79,11 +26,6 @@ persistent-diagnostic-sources = ["rustc", "clippy"]
 '[' = ']'
 '"' = '"'
 '`' = '`'
-
-[[language]]
-name = "toml"
-scope = "source.toml"
-indent = { tab-width = 2, unit = "  " }
 
 [[language]]
 name = "tsx"
@@ -119,10 +61,8 @@ indent = { tab-width = 2, unit = "  " }
 # Language Servers & Other Configurations
 # =============================================================================
 
-[language-server.rust-analyzer.config.files]
-watcher = "server"
-
 [language-server.rust-analyzer.config]
+files.watcher = "server"
 inlayHints.bindingModeHints.enable = false
 inlayHints.closingBraceHints.minLines = 10
 inlayHints.closureReturnTypeHints.enable = "with_block"
