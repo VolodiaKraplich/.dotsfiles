@@ -14,9 +14,8 @@ scrolloff = 999
 true-color = true
 
 [editor.auto-save]
-focus-lost = true
 after-delay.enable = true
-after-delay.timeout = 1
+after-delay.timeout = 1000
 
 [editor.cursor-shape]
 insert = "bar"
