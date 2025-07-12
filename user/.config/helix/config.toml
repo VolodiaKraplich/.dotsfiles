@@ -13,10 +13,6 @@ mouse = true
 scrolloff = 999
 true-color = true
 
-[editor.auto-save]
-after-delay.enable = true
-after-delay.timeout = 1000
-
 [editor.cursor-shape]
 insert = "bar"
 normal = "block"
