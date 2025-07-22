@@ -62,6 +62,8 @@ indent = { tab-width = 2, unit = "  " }
 # =============================================================================
 
 [language-server.rust-analyzer.config]
+check.command = "clippy"
+cargo.features = "all"
 files.watcher = "server"
 inlayHints.bindingModeHints.enable = false
 inlayHints.closingBraceHints.minLines = 10

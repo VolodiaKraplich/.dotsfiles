@@ -19,8 +19,8 @@ A minimal yet powerful dotfiles repository to automate Linux system setup.
   - Backup mechanism
 
 - **Terminal**
-  - Ghostty + Catppuccin Mocha theme
-  - Fira Code
+  - Rio + Catppuccin Mocha theme
+  - Maple Mono
   - Custom "command not found" handler
 
 ## 📁 Structure
@@ -34,7 +34,7 @@ Configuration/
     ├── .config/
     │   ├── fastfetch
     │   ├── fish
-    │   ├── ghostty
+    │   ├── rio
     │   ├── git
     │   ├── helix
     │   └── starship.toml
