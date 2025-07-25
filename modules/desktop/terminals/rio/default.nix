@@ -7,8 +7,9 @@
     confirm-before-quit = false
 
     [fonts]
-    size = 16
+    size = 18
     family = "Maple Mono"
+    hinting = false
 
     [editor]
     program = "helix"
