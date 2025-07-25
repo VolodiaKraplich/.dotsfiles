@@ -3,7 +3,6 @@
   imports = [
     ../common.nix
     ../../modules/desktop 
-    ../../modules/services
   ];
 
   home = {
