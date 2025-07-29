@@ -2,7 +2,7 @@
 {
   imports = [
     ../common.nix
-    ../../modules/desktop 
+    ../../modules/desktop
   ];
 
   home = {
@@ -16,7 +16,7 @@
     userEmail = "v1mkss.m+git@gmail.com";
 
     signing = {
-      key = "340AF1B5DB865841";
+      key = "57A7C6106037DC28";
       signByDefault = true;
     };
   };
