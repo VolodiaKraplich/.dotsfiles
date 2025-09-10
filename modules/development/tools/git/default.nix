@@ -10,7 +10,7 @@
       };
 
       core = {
-        editor = "hx";
+        editor = "code --wait";
         autocrlf = "input";
       };
 

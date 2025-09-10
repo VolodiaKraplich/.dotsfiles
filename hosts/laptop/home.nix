@@ -16,7 +16,7 @@
     userEmail = "v1mkss.m+git@gmail.com";
 
     signing = {
-      key = "002ABD09FDBDD50C";
+      key = "6063DD2C68F2CEFA";
       signByDefault = true;
     };
   };

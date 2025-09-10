@@ -8,8 +8,34 @@
 
     [fonts]
     size = 18
+    features = []
+    use-drawable-chars = true
+    symbol-map = []
+    disable-warnings-not-found = false
+    additional-dirs = []
+
+    [fonts.regular]
     family = "Maple Mono"
-    hinting = false
+    style = "Normal"
+    width = "Normal"
+
+    [fonts.bold]
+    family = "Maple Mono"
+    style = "Normal"
+    width = "Normal"
+
+    [fonts.italic]
+    family = "Maple Mono"
+    style = "Italic"
+    width = "Normal"
+
+    [fonts.bold-italic]
+    family = "Maple Mono"
+    style = "Italic"
+    width = "Normal"
+
+    [fonts.emoji]
+    family = "Noto Color Emoji"
 
     [editor]
     program = "helix"
