@@ -1,0 +1,509 @@
+{
+  // === CORE EDITOR SETTINGS ===
+  "features": {
+    "edit_prediction_provider": "copilot"
+  },
+
+  "agent": {
+    "default_model": {
+      "provider": "google",
+      "model": "gemini-2.5-pro"
+    }
+  },
+  "base_keymap": "VSCode",
+  "buffer_font_family": "Maple Mono",
+  "buffer_font_size": 16.0,
+  "ui_font_family": "Maple Mono",
+  "ui_font_size": 16,
+  "cursor_shape": "bar",
+  "tab_size": 2,
+
+  // === THEME & APPEARANCE ===
+  "theme": {
+    "mode": "system",
+    "light": "Maple Light",
+    "dark": "Maple Dark"
+  },
+  "minimap": {
+    "show": "auto",
+    "thumb": "always"
+  },
+  "scrollbar": {
+    "axes": {
+      "horizontal": true,
+      "vertical": null
+    }
+  },
+
+  // === TERMINAL ===
+  "terminal": {
+    "font_family": "Maple Mono"
+  },
+  "load_direnv": "shell_hook",
+
+  // === PRIVACY & UPDATES ===
+  "auto_update": false,
+  "telemetry": {
+    "diagnostics": false,
+    "metrics": false
+  },
+
+  // === LANGUAGE-SPECIFIC SETTINGS ===
+  "languages": {
+    "Go": {
+      "language_servers": ["gopls"],
+      "format_on_save": "on",
+      "formatter": "language_server",
+      "preferred_line_length": 100,
+      "hard_tabs": true,
+      "tab_size": 2,
+      "inlay_hints": {
+        "enabled": true,
+        "show_type_hints": true,
+        "show_parameter_hints": true,
+        "show_other_hints": true
+      }
+    },
+    "Rust": {
+      "language_servers": ["rust-analyzer"],
+      "format_on_save": "on",
+      "formatter": "language_server",
+      "code_actions_on_format": {
+        "source.organizeImports": true,
+        "source.fixAll": true
+      },
+      "preferred_line_length": 100,
+      "hard_tabs": false,
+      "tab_size": 2,
+      "show_edit_predictions": true,
+      "inlay_hints": {
+        "enabled": true,
+        "show_type_hints": true,
+        "show_parameter_hints": true,
+        "show_other_hints": true
+      }
+    },
+    "JavaScript": {
+      "format_on_save": "on",
+      "formatter": {
+        "external": {
+          "command": "prettier",
+          "arguments": ["--stdin-filepath", "{buffer_path}"]
+        }
+      },
+      "preferred_line_length": 100,
+      "tab_size": 2
+    },
+    "TypeScript": {
+      "format_on_save": "on",
+      "formatter": {
+        "external": {
+          "command": "prettier",
+          "arguments": ["--stdin-filepath", "{buffer_path}"]
+        }
+      },
+      "code_actions_on_format": {
+        "source.organizeImports": true
+      },
+      "preferred_line_length": 100,
+      "tab_size": 2
+    },
+    "TSX": {
+      "format_on_save": "on",
+      "formatter": {
+        "external": {
+          "command": "prettier",
+          "arguments": ["--stdin-filepath", "{buffer_path}"]
+        }
+      },
+      "code_actions_on_format": {
+        "source.organizeImports": true
+      },
+      "preferred_line_length": 100,
+      "tab_size": 2
+    },
+    "JSON": {
+      "format_on_save": "on",
+      "formatter": {
+        "external": {
+          "command": "prettier",
+          "arguments": ["--stdin-filepath", "{buffer_path}"]
+        }
+      },
+      "tab_size": 2
+    },
+    "JSONC": {
+      "format_on_save": "on",
+      "formatter": {
+        "external": {
+          "command": "prettier",
+          "arguments": ["--stdin-filepath", "{buffer_path}"]
+        }
+      },
+      "tab_size": 2
+    },
+    "YAML": {
+      "format_on_save": "on",
+      "tab_size": 2
+    },
+    "Markdown": {
+      "format_on_save": "on",
+      "preferred_line_length": 100,
+      "soft_wrap": "preferred_line_length"
+    }
+  },
+
+  // === LANGUAGE SERVER PROTOCOL (LSP) CONFIGURATION ===
+  "lsp": {
+    // Go Language Server (gopls)
+    "gopls": {
+      "initialization_options": {
+        "staticcheck": true,
+        "completeUnimported": true,
+        "matcher": "Fuzzy",
+        "usePlaceholders": true,
+        "experimentalPostfixCompletions": true,
+        "analyses": {
+          "unusedparams": true,
+          "unusedvariable": true,
+          "useany": true
+        },
+        "hints": {
+          "assignVariableTypes": true,
+          "compositeLiteralFields": true,
+          "compositeLiteralTypes": true,
+          "constantValues": true,
+          "functionTypeParameters": true,
+          "parameterNames": true,
+          "rangeVariableTypes": true
+        },
+        "semanticTokens": true
+      }
+    },
+
+    // Rust Language Server (rust-analyzer)
+    "rust-analyzer": {
+      "initialization_options": {
+        // === CARGO CONFIGURATION ===
+        "cargo": {
+          "allFeatures": true,
+          "buildScripts": {
+            "enable": true,
+            "rebuildOnSave": true,
+            "useRustcWrapper": true
+          },
+          "loadOutDirsFromCheck": true,
+          "autoreload": true,
+          "allTargets": true
+        },
+
+        // === ADVANCED CHECKING ===
+        "check": {
+          "command": "clippy",
+          "workspace": true,
+          "allTargets": true,
+          "extraArgs": [
+            "--",
+            "-W",
+            "clippy::all",
+            "-W",
+            "clippy::pedantic",
+            "-W",
+            "clippy::nursery",
+            "-W",
+            "clippy::cargo",
+            "-A",
+            "clippy::module_name_repetitions",
+            "-A",
+            "clippy::missing_errors_doc",
+            "-A",
+            "clippy::missing_panics_doc"
+          ]
+        },
+        "checkOnSave": true,
+
+        // === COMPLETION ENHANCEMENTS ===
+        "completion": {
+          "addCallArgumentSnippets": true,
+          "addCallParenthesis": true,
+          "autoimport": {
+            "enable": true
+          },
+          "postfix": {
+            "enable": true
+          },
+          "privateEditable": {
+            "enable": true
+          },
+          "fullFunctionSignatures": {
+            "enable": true
+          },
+          "callable": {
+            "snippets": "fill_arguments"
+          },
+          "termSearch": {
+            "enable": true,
+            "fuel": 2000
+          }
+        },
+
+        // === DIAGNOSTICS & ERROR HANDLING ===
+        "diagnostics": {
+          "enable": true,
+          "enableExperimental": true,
+          "disabled": ["unresolved-proc-macro"],
+          "styleLints": {
+            "enable": true
+          }
+        },
+
+        // === HOVER & DOCUMENTATION ===
+        "hover": {
+          "actions": {
+            "debug": true,
+            "enable": true,
+            "gotoTypeDef": true,
+            "implementations": true,
+            "references": true,
+            "run": true
+          },
+          "documentation": {
+            "enable": true,
+            "keywords": {
+              "enable": true
+            }
+          },
+          "links": {
+            "enable": true
+          },
+          "memoryLayout": {
+            "enable": true,
+            "alignment": "hexadecimal",
+            "offset": "hexadecimal",
+            "size": "both"
+          },
+          "show": {
+            "enumVariants": 10,
+            "fields": 10,
+            "traitAssocItems": 10
+          }
+        },
+
+        // === COMPREHENSIVE INLAY HINTS ===
+        "inlayHints": {
+          "bindingModeHints": {
+            "enable": true
+          },
+          "chainingHints": {
+            "enable": true
+          },
+          "closingBraceHints": {
+            "enable": true,
+            "minLines": 10
+          },
+          "closureCaptureHints": {
+            "enable": true
+          },
+          "closureReturnTypeHints": {
+            "enable": "with_block"
+          },
+          "closureStyle": "impl_fn",
+          "discriminantHints": {
+            "enable": "fieldless"
+          },
+          "expressionAdjustmentHints": {
+            "enable": "never"
+          },
+          "genericParameterHints": {
+            "const": {
+              "enable": true
+            },
+            "lifetime": {
+              "enable": true
+            },
+            "type": {
+              "enable": true
+            }
+          },
+          "lifetimeElisionHints": {
+            "enable": "skip_trivial",
+            "useParameterNames": true
+          },
+          "maxLength": 30,
+          "parameterHints": {
+            "enable": true
+          },
+          "rangeExclusiveHints": {
+            "enable": true
+          },
+          "renderColons": true,
+          "typeHints": {
+            "enable": true,
+            "hideClosureInitialization": false,
+            "hideNamedConstructor": false
+          },
+          "implicitDrops": {
+            "enable": false
+          }
+        },
+
+        // === CODE LENS FEATURES ===
+        "lens": {
+          "debug": true,
+          "enable": true,
+          "implementations": true,
+          "location": "above_name",
+          "references": {
+            "adt": {
+              "enable": true
+            },
+            "enumVariant": {
+              "enable": true
+            },
+            "method": {
+              "enable": true
+            },
+            "trait": {
+              "enable": true
+            }
+          },
+          "run": true
+        },
+
+        // === PROCEDURAL MACROS ===
+        "procMacro": {
+          "enable": true,
+          "attributes": {
+            "enable": true
+          },
+          "ignored": {
+            "leptos_macro": ["server"]
+          }
+        },
+
+        // === IMPORTS & FORMATTING ===
+        "imports": {
+          "granularity": {
+            "enforce": false,
+            "group": "crate"
+          },
+          "group": {
+            "enable": true
+          },
+          "merge": {
+            "glob": true
+          },
+          "prefix": "by_crate"
+        },
+
+        // === ASSISTS & REFACTORING ===
+        "assist": {
+          "emitMustUse": true,
+          "expressionFillDefault": "default",
+          "preferSelf": true,
+          "termSearch": {
+            "borrowcheck": true,
+            "fuel": 2000
+          }
+        },
+
+        // === WORKSPACE & PERFORMANCE ===
+        "cachePriming": {
+          "enable": true,
+          "numThreads": 0
+        },
+        "lru": {
+          "capacity": 256
+        },
+
+        // === SEMANTIC HIGHLIGHTING ===
+        "semanticHighlighting": {
+          "nonStandardTokens": true,
+          "operator": {
+            "enable": true,
+            "specialization": {
+              "enable": true
+            }
+          },
+          "punctuation": {
+            "enable": true,
+            "specialization": {
+              "enable": true
+            }
+          },
+          "strings": {
+            "enable": true
+          }
+        },
+
+        // === REFERENCES & NAVIGATION ===
+        "references": {
+          "excludeImports": false,
+          "excludeTests": false
+        },
+
+        // === RUNTIME & TESTING ===
+        "runnables": {
+          "extraArgs": ["--release"],
+          "extraTestBinaryArgs": ["--show-output", "--nocapture"]
+        },
+
+        // === WORKSPACE SYMBOLS ===
+        "workspace": {
+          "symbol": {
+            "search": {
+              "scope": "workspace_and_dependencies",
+              "kind": "all_symbols",
+              "limit": 256,
+              "excludeImports": false
+            }
+          }
+        },
+
+        // === RUSTFMT CONFIGURATION ===
+        "rustfmt": {
+          "extraArgs": [],
+          "overrideCommand": null,
+          "rangeFormatting": {
+            "enable": false
+          }
+        },
+
+        // === ADVANCED FEATURES ===
+        "joinLines": {
+          "joinAssignments": true,
+          "joinElseIf": true,
+          "removeTrailingComma": true,
+          "unwrapTrivialBlock": true
+        },
+
+        // === HIGHLIGHT RELATED ITEMS ===
+        "highlightRelated": {
+          "breakPoints": {
+            "enable": true
+          },
+          "closureCaptures": {
+            "enable": true
+          },
+          "exitPoints": {
+            "enable": true
+          },
+          "references": {
+            "enable": true
+          },
+          "yieldPoints": {
+            "enable": true
+          }
+        },
+
+        // === SIGNATURE HELP ===
+        "signatureInfo": {
+          "detail": "full",
+          "documentation": {
+            "enable": true
+          }
+        }
+      }
+    }
+  }
+}
