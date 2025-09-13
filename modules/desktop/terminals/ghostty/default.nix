@@ -2,7 +2,7 @@
 
 {
   xdg.configFile."ghostty/config".text = ''
-    theme = catppuccin-mocha
+    theme = Maple-Dark
     mouse-hide-while-typing = true
     quit-after-last-window-closed = true
 
@@ -15,5 +15,29 @@
 
     window-theme = dark
     background-opacity = 1.0
+  '';
+
+  xdg.configFile."ghostty/themes/Maple-Dark".text = ''
+    background = #1e1e1f
+    foreground = #cbd5e1
+    palette = 8=#666666
+    palette = 12=#a8e0ff
+    palette = 14=#bafffe
+    palette = 10=#bdf8c7
+    palette = 13=#ebe5ff
+    palette = 9=#ffc4c4
+    palette = 15=#ffffff
+    palette = 11=#ffe8b9
+    palette = 0=#333333
+    palette = 4=#8fc7ff
+    palette = 6=#a1e8e5
+    palette = 2=#a4dfae
+    palette = 5=#d2ccff
+    palette = 1=#edabab
+    palette = 7=#f3f2f2
+    palette = 3=#eecfa0
+    cursor-color = #cbd5e1
+    selection-background = #cbd5e1
+    selection-foreground = #1e1e1f
   '';
 }
