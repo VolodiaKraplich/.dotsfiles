@@ -67,12 +67,8 @@ stow -D .config
 
 Install required fonts:
 
-- **[Maple Mono](https://github.com/subframe7536/maple-font/releases):** Main programming font
+- **[Maple Mono](https://font.subf.dev/en/):** Main programming font
 - **Noto Color Emoji:** Emoji support in terminals
-
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## 🤝 Contributing
 
@@ -85,4 +81,6 @@ Feel free to:
 
 ---
 
-**Happy coding!** 🚀
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
