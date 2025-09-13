@@ -1,5 +1,5 @@
 {
-  // === CORE EDITOR SETTINGS ===
+  // === AI ===
   "features": {
     "edit_prediction_provider": "copilot"
   },
@@ -10,6 +10,9 @@
       "model": "gemini-2.5-pro"
     }
   },
+
+  // === CORE EDITOR SETTINGS ===
+
   "base_keymap": "VSCode",
   "buffer_font_family": "Maple Mono",
   "buffer_font_size": 16.0,
