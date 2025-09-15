@@ -1,10 +1,15 @@
 {
   // === AI ===
+  "disable_ai": true,
   "features": {
     "edit_prediction_provider": "copilot"
   },
 
   "agent": {
+    "inline_assistant_model": {
+      "provider": "google",
+      "model": "gemini-2.5-pro"
+    },
     "default_model": {
       "provider": "google",
       "model": "gemini-2.5-pro"
@@ -27,6 +32,7 @@
     "light": "Maple Light",
     "dark": "Maple Dark"
   },
+  "icon_theme": "Catppuccin Mocha",
   "minimap": {
     "show": "auto",
     "thumb": "always"
