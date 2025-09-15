@@ -1,0 +1,98 @@
+{
+	"window-size": {
+		"width": 1280,
+		"height": 766
+	},
+	"window-maximized": true,
+	"window-position": {
+		"x": 325,
+		"y": 196
+	},
+	"url": "https://music.youtube.com/watch?v=K9AAD-3Xpds",
+	"options": {
+		"tray": true,
+		"appVisible": true,
+		"autoUpdates": false,
+		"alwaysOnTop": false,
+		"hideMenu": true,
+		"hideMenuWarned": true,
+		"startAtLogin": false,
+		"disableHardwareAcceleration": false,
+		"removeUpgradeButton": false,
+		"restartOnConfigChanges": false,
+		"trayClickPlayPause": false,
+		"autoResetAppCache": false,
+		"resumeOnStart": false,
+		"likeButtons": "",
+		"proxy": "",
+		"startingPage": "",
+		"overrideUserAgent": false,
+		"usePodcastParticipantAsArtist": false,
+		"themes": []
+	},
+	"plugins": {
+		"notifications": {},
+		"video-toggle": {
+			"mode": "custom"
+		},
+		"precise-volume": {
+			"globalShortcuts": {}
+		},
+		"discord": {
+			"enabled": true,
+			"autoReconnect": true,
+			"activityTimeoutEnabled": true,
+			"activityTimeoutTime": 600000,
+			"playOnYouTubeMusic": true,
+			"hideGitHubButton": true,
+			"hideDurationLeft": false,
+			"statusDisplayType": 2,
+			"listenAlong": true
+		},
+		"synced-lyrics": {
+			"enabled": true,
+			"preciseTiming": true,
+			"showLyricsEvenIfInexact": true,
+			"showTimeCodes": false,
+			"defaultTextString": "♪",
+			"lineEffect": "fancy",
+			"romanization": true
+		},
+		"sponsorblock": {
+			"enabled": true
+		},
+		"equalizer": {
+			"enabled": true
+		},
+		"downloader": {
+			"enabled": false
+		},
+		"auth-proxy-adapter": {
+			"enabled": false
+		},
+		"bypass-age-restrictions": {
+			"enabled": true
+		},
+		"album-color-theme": {
+			"enabled": true,
+			"ratio": 1
+		},
+		"album-actions": {
+			"enabled": false
+		},
+		"ambient-mode": {
+			"enabled": true
+		},
+		"compact-sidebar": {
+			"enabled": true
+		},
+		"audio-compressor": {
+			"enabled": false
+		}
+	},
+	"__internal__": {
+		"migrations": {
+			"version": "3.11.0"
+		}
+	}
+}
