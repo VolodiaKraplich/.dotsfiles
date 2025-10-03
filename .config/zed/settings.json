@@ -165,6 +165,13 @@
 
   // === LANGUAGE SERVER PROTOCOL (LSP) CONFIGURATION ===
   "lsp": {
+    "ruff": {
+      "initialization_options": {
+        "settings": {
+          "exclude": ["*"]
+        }
+      }
+    },
     // Go Language Server (gopls)
     "gopls": {
       "initialization_options": {
@@ -261,7 +268,7 @@
         "diagnostics": {
           "enable": true,
           "enableExperimental": true,
-          "disabled": ["unresolved-proc-macro"],
+          "disabled": ["unresolved-proc-macro", "unresolved-method"],
           "styleLints": {
             "enable": true
           }
