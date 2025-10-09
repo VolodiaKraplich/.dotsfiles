@@ -7,11 +7,15 @@ theme = "catppuccin_mocha"
 [editor]
 bufferline = "multiple"
 color-modes = true
+cursorline = true
 idle-timeout = 0
 line-number = "relative"
 mouse = true
 scrolloff = 999
 true-color = true
+auto-completion = true
+auto-format = true
+completion-trigger-len = 2
 
 [editor.cursor-shape]
 insert = "bar"
@@ -19,8 +23,11 @@ normal = "block"
 select = "underline"
 
 [editor.file-picker]
-git-global = false # show files hidden by git globally
-hidden = false     # show hidden files as in starting with a dot
+hidden = false
+git-global = false
+git-ignore = true
+follow-symlinks = true
+deduplicate-links = true
 
 [editor.indent-guides]
 character = "|"
@@ -30,17 +37,36 @@ skip-levels = 1
 [editor.lsp]
 display-inlay-hints = true
 display-messages = true
+auto-signature-help = true
+display-signature-help-docs = true
+snippets = true
 
 [editor.soft-wrap]
 enable = true
 
+[editor.auto-pairs]
+'(' = ")"
+'{' = "}"
+'[' = "]"
+'"' = '"'
+'`' = "`"
+
+[editor.search]
+smart-case = true
+wrap-around = true
+
+[editor.whitespace.render]
+space = "none"
+tab = "none"
+newline = "none"
+
 # =============================================================================
-# Theme & UI
+# Statusline Configuration
 # =============================================================================
 
 [editor.statusline]
-mode.insert = "INSERT"
 mode.normal = "NORMAL"
+mode.insert = "INSERT"
 mode.select = "SELECT"
 left = [
   "mode",
