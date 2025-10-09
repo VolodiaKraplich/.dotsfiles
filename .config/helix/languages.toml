@@ -1,73 +1,307 @@
 # =============================================================================
-# Languages
+# Language Server Configurations
+# =============================================================================
+
+[language-server.rust-analyzer]
+command = "rust-analyzer"
+
+[language-server.rust-analyzer.config]
+# === CARGO CONFIGURATION ===
+cargo.allFeatures = true
+cargo.buildScripts.enable = true
+cargo.buildScripts.rebuildOnSave = true
+cargo.buildScripts.useRustcWrapper = true
+cargo.loadOutDirsFromCheck = true
+cargo.autoreload = true
+cargo.allTargets = true
+# === ADVANCED CHECKING ===
+check.command = "clippy"
+check.workspace = true
+check.allTargets = true
+check.extraArgs = [
+  "--",
+  "-W",
+  "clippy::all",
+  "-W",
+  "clippy::pedantic",
+  "-W",
+  "clippy::nursery",
+  "-W",
+  "clippy::cargo",
+  "-A",
+  "clippy::module_name_repetitions",
+  "-A",
+  "clippy::missing_errors_doc",
+  "-A",
+  "clippy::missing_panics_doc",
+]
+checkOnSave = true
+# === COMPLETION ENHANCEMENTS ===
+completion.addCallArgumentSnippets = true
+completion.addCallParenthesis = true
+completion.autoimport.enable = true
+completion.postfix.enable = true
+completion.privateEditable.enable = true
+completion.fullFunctionSignatures.enable = true
+completion.callable.snippets = "fill_arguments"
+completion.termSearch.enable = true
+completion.termSearch.fuel = 2000
+# === DIAGNOSTICS & ERROR HANDLING ===
+diagnostics.enable = true
+diagnostics.enableExperimental = true
+diagnostics.disabled = ["unresolved-proc-macro", "unresolved-method"]
+diagnostics.styleLints.enable = true
+# === HOVER & DOCUMENTATION ===
+hover.actions.debug = true
+hover.actions.enable = true
+hover.actions.gotoTypeDef = true
+hover.actions.implementations = true
+hover.actions.references = true
+hover.actions.run = true
+hover.documentation.enable = true
+hover.documentation.keywords.enable = true
+hover.links.enable = true
+hover.memoryLayout.enable = true
+hover.memoryLayout.alignment = "hexadecimal"
+hover.memoryLayout.offset = "hexadecimal"
+hover.memoryLayout.size = "both"
+hover.show.enumVariants = 10
+hover.show.fields = 10
+hover.show.traitAssocItems = 10
+# === COMPREHENSIVE INLAY HINTS ===
+inlayHints.bindingModeHints.enable = true
+inlayHints.chainingHints.enable = true
+inlayHints.closingBraceHints.enable = true
+inlayHints.closingBraceHints.minLines = 10
+inlayHints.closureCaptureHints.enable = true
+inlayHints.closureReturnTypeHints.enable = "with_block"
+inlayHints.closureStyle = "impl_fn"
+inlayHints.discriminantHints.enable = "fieldless"
+inlayHints.expressionAdjustmentHints.enable = "never"
+inlayHints.genericParameterHints.const.enable = true
+inlayHints.genericParameterHints.lifetime.enable = true
+inlayHints.genericParameterHints.type.enable = true
+inlayHints.lifetimeElisionHints.enable = "skip_trivial"
+inlayHints.lifetimeElisionHints.useParameterNames = true
+inlayHints.maxLength = 30
+inlayHints.parameterHints.enable = true
+inlayHints.rangeExclusiveHints.enable = true
+inlayHints.renderColons = true
+inlayHints.typeHints.enable = true
+inlayHints.typeHints.hideClosureInitialization = false
+inlayHints.typeHints.hideNamedConstructor = false
+inlayHints.implicitDrops.enable = false
+# === CODE LENS FEATURES ===
+lens.debug.enable = true
+lens.enable = true
+lens.implementations.enable = true
+lens.location = "above_name"
+lens.references.adt.enable = true
+lens.references.enumVariant.enable = true
+lens.references.method.enable = true
+lens.references.trait.enable = true
+lens.run.enable = true
+# === PROCEDURAL MACROS ===
+procMacro.enable = true
+procMacro.attributes.enable = true
+procMacro.ignored = { leptos_macro = ["server"] }
+# === IMPORTS & FORMATTING ===
+imports.granularity.enforce = false
+imports.granularity.group = "crate"
+imports.group.enable = true
+imports.merge.glob = true
+imports.prefix = "by_crate"
+# === ASSISTS & REFACTORING ===
+assist.emitMustUse = true
+assist.expressionFillDefault = "default"
+assist.preferSelf = true
+assist.termSearch.borrowcheck = true
+assist.termSearch.fuel = 2000
+# === WORKSPACE & PERFORMANCE ===
+cachePriming.enable = true
+cachePriming.numThreads = 0
+lru.capacity = 256
+# === SEMANTIC HIGHLIGHTING ===
+semanticHighlighting.nonStandardTokens = true
+semanticHighlighting.operator.enable = true
+semanticHighlighting.operator.specialization.enable = true
+semanticHighlighting.punctuation.enable = true
+semanticHighlighting.punctuation.specialization.enable = true
+semanticHighlighting.strings.enable = true
+# === REFERENCES & NAVIGATION ===
+references.excludeImports = false
+references.excludeTests = false
+# === RUNTIME & TESTING ===
+runnables.extraArgs = ["--release"]
+runnables.extraTestBinaryArgs = ["--show-output", "--nocapture"]
+# === WORKSPACE SYMBOLS ===
+workspace.symbol.search.scope = "workspace_and_dependencies"
+workspace.symbol.search.kind = "all_symbols"
+workspace.symbol.search.limit = 256
+workspace.symbol.search.excludeImports = false
+# === RUSTFMT CONFIGURATION ===
+rustfmt.extraArgs = []
+rustfmt.rangeFormatting.enable = false
+# === ADVANCED FEATURES ===
+joinLines.joinAssignments = true
+joinLines.joinElseIf = true
+joinLines.removeTrailingComma = true
+joinLines.unwrapTrivialBlock = true
+# === HIGHLIGHT RELATED ITEMS ===
+highlightRelated.breakPoints.enable = true
+highlightRelated.closureCaptures.enable = true
+highlightRelated.exitPoints.enable = true
+highlightRelated.references.enable = true
+highlightRelated.yieldPoints.enable = true
+# === SIGNATURE HELP ===
+signatureInfo.detail = "full"
+signatureInfo.documentation.enable = true
+# === FILE WATCHER ===
+files.watcher = "server"
+
+# =============================================================================
+# Go Language Server
+# =============================================================================
+
+[language-server.gopls]
+command = "gopls"
+
+[language-server.gopls.config]
+staticcheck = true
+completeUnimported = true
+matcher = "Fuzzy"
+usePlaceholders = true
+experimentalPostfixCompletions = true
+semanticTokens = true
+
+[language-server.gopls.config.analyses]
+unusedparams = true
+unusedvariable = true
+useany = true
+
+[language-server.gopls.config.hints]
+assignVariableTypes = true
+compositeLiteralFields = true
+compositeLiteralTypes = true
+constantValues = true
+functionTypeParameters = true
+parameterNames = true
+rangeVariableTypes = true
+
+# =============================================================================
+# TypeScript Language Server
+# =============================================================================
+
+[language-server.typescript-language-server]
+command = "typescript-language-server"
+args = ["--stdio"]
+
+[language-server.typescript-language-server.config]
+hostInfo = "helix"
+
+[language-server.typescript-language-server.config.typescript.inlayHints]
+includeInlayParameterNameHints = "all"
+includeInlayParameterNameHintsWhenArgumentMatchesName = true
+includeInlayFunctionParameterTypeHints = true
+includeInlayVariableTypeHints = true
+includeInlayVariableTypeHintsWhenTypeMatchesName = true
+includeInlayPropertyDeclarationTypeHints = true
+includeInlayFunctionLikeReturnTypeHints = true
+includeInlayEnumMemberValueHints = true
+
+[language-server.typescript-language-server.config.javascript.inlayHints]
+includeInlayParameterNameHints = "all"
+includeInlayParameterNameHintsWhenArgumentMatchesName = true
+includeInlayFunctionParameterTypeHints = true
+includeInlayVariableTypeHints = true
+includeInlayVariableTypeHintsWhenTypeMatchesName = true
+includeInlayPropertyDeclarationTypeHints = true
+includeInlayFunctionLikeReturnTypeHints = true
+includeInlayEnumMemberValueHints = true
+
+# =============================================================================
+# Python Language Server
+# =============================================================================
+
+[language-server.pylsp]
+command = "pylsp"
+
+[language-server.pylsp.config.pylsp.plugins]
+ruff.enabled = true
+ruff.lineLength = 100
+ruff.extendSelect = ["I"]
+
+# =============================================================================
+# Other Language Servers
+# =============================================================================
+
+[language-server.vscode-json-language-server]
+command = "vscode-json-language-server"
+args = ["--stdio"]
+
+[language-server.vscode-json-language-server.config]
+provideFormatter = true
+
+[language-server.yaml-language-server]
+command = "yaml-language-server"
+args = ["--stdio"]
+
+[language-server.marksman]
+command = "marksman"
+args = ["server"]
+
+# =============================================================================
+# Language Overrides (only specify what you want to change)
 # =============================================================================
 
 [[language]]
 name = "rust"
-scope = "source.rust"
-injection-regex = "rs|rust"
-file-types = ["rs"]
-roots = ["Cargo.toml", "Cargo.lock"]
-shebangs = ["rust-script", "cargo"]
 auto-format = true
-formatter = { command = "rustfmt" }
-comment-tokens = ["//", "///", "//!"]
-block-comment-tokens = [
-  { start = "/*", end = "*/" },
-  { start = "/**", end = "*/" },
-  { start = "/*!", end = "*/" },
-]
-indent = { tab-width = 2, unit = "    " }
-persistent-diagnostic-sources = ["rustc", "clippy"]
-
-[language.auto-pairs]
-'(' = ')'
-'{' = '}'
-'[' = ']'
-'"' = '"'
-'`' = '`'
+indent = { tab-width = 2, unit = "  " }
 
 [[language]]
-name = "tsx"
-scope = "source.tsx"
-injection-regex = "(tsx)"
-language-id = "typescriptreact"
-file-types = ["tsx"]
-roots = ["package.json", "tsconfig.json"]
-comment-token = "//"
-block-comment-tokens = { start = "/*", end = "*/" }
-language-servers = ["typescript-language-server"]
-indent = { tab-width = 2, unit = "  " }
+name = "go"
+auto-format = true
+indent = { tab-width = 2, unit = "\t" }
 
 [[language]]
 name = "typescript"
-scope = "source.ts"
-injection-regex = "(ts|typescript)"
-language-id = "typescript"
-file-types = ["ts", "mts", "cts"]
-shebangs = ["deno", "bun", "ts-node"]
-roots = ["package.json", "tsconfig.json"]
-comment-token = "//"
-block-comment-tokens = { start = "/*", end = "*/" }
-language-servers = [
-  "typescript-language-server",
-  { name = "efm-lsp-prettier", only-features = [
-    "format",
-  ] },
-]
+auto-format = true
 indent = { tab-width = 2, unit = "  " }
 
-# =============================================================================
-# Language Servers & Other Configurations
-# =============================================================================
+[[language]]
+name = "tsx"
+auto-format = true
+indent = { tab-width = 2, unit = "  " }
 
-[language-server.rust-analyzer.config]
-check.command = "clippy"
-cargo.features = "all"
-files.watcher = "server"
-inlayHints.bindingModeHints.enable = false
-inlayHints.closingBraceHints.minLines = 10
-inlayHints.closureReturnTypeHints.enable = "with_block"
-inlayHints.discriminantHints.enable = "fieldless"
-inlayHints.lifetimeElisionHints.enable = "skip_trivial"
-inlayHints.typeHints.hideClosureInitialization = false
+[[language]]
+name = "javascript"
+auto-format = true
+indent = { tab-width = 2, unit = "  " }
+
+[[language]]
+name = "jsx"
+auto-format = true
+indent = { tab-width = 2, unit = "  " }
+
+[[language]]
+name = "json"
+auto-format = true
+indent = { tab-width = 2, unit = "  " }
+
+[[language]]
+name = "yaml"
+auto-format = true
+indent = { tab-width = 2, unit = "  " }
+
+[[language]]
+name = "markdown"
+auto-format = true
+indent = { tab-width = 2, unit = "  " }
+soft-wrap.enable = true
+text-width = 100
+
+[[language]]
+name = "python"
+auto-format = true
+indent = { tab-width = 2, unit = "    " }
