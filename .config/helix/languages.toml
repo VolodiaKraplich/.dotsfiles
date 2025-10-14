@@ -219,6 +219,12 @@ includeInlayPropertyDeclarationTypeHints = true
 includeInlayFunctionLikeReturnTypeHints = true
 includeInlayEnumMemberValueHints = true
 
+
+[language-server.vue]
+command = "vue-language-server"
+args = ["--stdio"]
+config = { typescript = { tsdk = "node_modules/typescript/lib/" } }
+
 # =============================================================================
 # Python Language Server
 # =============================================================================
@@ -232,26 +238,7 @@ ruff.lineLength = 100
 ruff.extendSelect = ["I"]
 
 # =============================================================================
-# Other Language Servers
-# =============================================================================
-
-[language-server.vscode-json-language-server]
-command = "vscode-json-language-server"
-args = ["--stdio"]
-
-[language-server.vscode-json-language-server.config]
-provideFormatter = true
-
-[language-server.yaml-language-server]
-command = "yaml-language-server"
-args = ["--stdio"]
-
-[language-server.marksman]
-command = "marksman"
-args = ["server"]
-
-# =============================================================================
-# Language Overrides (only specify what you want to change)
+# Language Overrides
 # =============================================================================
 
 [[language]]
@@ -305,3 +292,13 @@ text-width = 100
 name = "python"
 auto-format = true
 indent = { tab-width = 2, unit = "    " }
+
+[[language]]
+name = "vue"
+auto-format = true
+indent = { tab-width = 2, unit = "  " }
+
+[[language]]
+name = "toml"
+auto-format = true
+indent = { tab-width = 2, unit = "  " }

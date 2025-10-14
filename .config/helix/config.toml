@@ -110,6 +110,7 @@ left = [
   "file-modification-indicator",
 ]
 right = [
+  "spinner",
   "diagnostics",
   "spacer",
   "position",
