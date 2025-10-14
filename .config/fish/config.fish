@@ -143,3 +143,10 @@ set -g __done_exclude '^git (?!push|pull|fetch)'  # Don't notify for most git co
 set -g __done_notify_sound 0               # No sound with notifications
 set -g __done_notification_duration 3000   # How long notifications stay on screen (ms)
 set -U __done_notification_urgency_level low # Set urgency level to low
+
+# pnpm
+set -gx PNPM_HOME "/home/volodia/.local/share/pnpm"
+if not string match -q -- $PNPM_HOME $PATH
+  set -gx PATH "$PNPM_HOME" $PATH
+end
+# pnpm end
