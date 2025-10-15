@@ -2,12 +2,6 @@
   "display": {
     "separator": " "
   },
-  "logo": {
-    "height": 18,
-    "padding": {
-      "top": 1
-    }
-  },
   "modules": [
     "break",
     {

@@ -77,11 +77,15 @@
     "Rust": {
       "language_servers": ["rust-analyzer"],
       "format_on_save": "on",
-      "formatter": "language_server",
-      "code_actions_on_format": {
-        "source.organizeImports": true,
-        "source.fixAll": true
-      },
+      "formatter": [
+        {
+          "code_action": "source.organizeImports"
+        },
+        {
+          "code_action": "source.fixAll"
+        },
+        "language_server"
+      ],
       "preferred_line_length": 100,
       "hard_tabs": false,
       "tab_size": 2,
@@ -99,18 +103,22 @@
       "tab_size": 2
     },
     "TypeScript": {
+      "formatter": [
+        {
+          "code_action": "source.organizeImports"
+        }
+      ],
       "format_on_save": "on",
-      "code_actions_on_format": {
-        "source.organizeImports": true
-      },
       "preferred_line_length": 100,
       "tab_size": 2
     },
     "TSX": {
+      "formatter": [
+        {
+          "code_action": "source.organizeImports"
+        }
+      ],
       "format_on_save": "on",
-      "code_actions_on_format": {
-        "source.organizeImports": true
-      },
       "preferred_line_length": 100,
       "tab_size": 2
     },
