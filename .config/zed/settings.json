@@ -12,8 +12,8 @@
       "model": "gemini-2.5-flash"
     },
     "default_model": {
-      "provider": "google",
-      "model": "gemini-2.5-pro"
+      "provider": "zed.dev",
+      "model": "claude-3-7-sonnet"
     }
   },
 
@@ -90,6 +90,24 @@
       "hard_tabs": false,
       "tab_size": 2,
       "show_edit_predictions": true,
+      "inlay_hints": {
+        "enabled": true,
+        "show_type_hints": true,
+        "show_parameter_hints": true,
+        "show_other_hints": true
+      }
+    },
+    "Java": {
+      "language_servers": ["jdtls"],
+      "format_on_save": "on",
+      "formatter": [
+        {
+          "code_action": "source.organizeImports"
+        },
+        "language_server"
+      ],
+      "hard_tabs": false,
+      "tab_size": 2,
       "inlay_hints": {
         "enabled": true,
         "show_type_hints": true,
@@ -496,6 +514,204 @@
           "detail": "full",
           "documentation": {
             "enable": true
+          }
+        }
+      }
+    },
+
+    // Java Language Server (jdtls)
+    "jdtls": {
+      "initialization_options": {
+        "bundles": []
+      },
+      "settings": {
+        "java": {
+          "errors": {
+            "incompleteClasspath": {
+              "severity": "warning"
+            }
+          },
+          "configuration": {
+            "updateBuildConfiguration": "automatic"
+          },
+          "trace": {
+            "server": "off"
+          },
+          "import": {
+            "gradle": {
+              "enabled": true,
+              "wrapper": {
+                "enabled": true
+              },
+              "version": null,
+              "home": null,
+              "java": {
+                "home": null
+              },
+              "offline": {
+                "enabled": false
+              },
+              "arguments": null,
+              "jvmArguments": null,
+              "user": {
+                "home": null
+              }
+            },
+            "maven": {
+              "enabled": true,
+              "offline": {
+                "enabled": false
+              }
+            },
+            "exclusions": [
+              "**/node_modules/**",
+              "**/.metadata/**",
+              "**/archetype-resources/**",
+              "**/META-INF/maven/**",
+              "/**/test/**"
+            ]
+          },
+          "jdt": {
+            "ls": {
+              "lombokSupport": {
+                "enabled": true
+              },
+              "protobufSupport": {
+                "enabled": false
+              }
+            }
+          },
+          "referencesCodeLens": {
+            "enabled": true
+          },
+          "signatureHelp": {
+            "enabled": true,
+            "description": {
+              "enabled": true
+            }
+          },
+          "implementationsCodeLens": {
+            "enabled": true
+          },
+          "format": {
+            "enabled": true,
+            "settings": {
+              "url": null,
+              "profile": null
+            },
+            "comments": {
+              "enabled": true
+            },
+            "onType": {
+              "enabled": true
+            }
+          },
+          "saveActions": {
+            "organizeImports": true
+          },
+          "contentProvider": {
+            "preferred": null
+          },
+          "autobuild": {
+            "enabled": true
+          },
+          "maxConcurrentBuilds": 1,
+          "completion": {
+            "enabled": true,
+            "guessMethodArguments": true,
+            "favoriteStaticMembers": [
+              "org.junit.Assert.*",
+              "org.junit.Assume.*",
+              "org.junit.jupiter.api.Assertions.*",
+              "org.junit.jupiter.api.Assumptions.*",
+              "org.junit.jupiter.api.DynamicContainer.*",
+              "org.junit.jupiter.api.DynamicTest.*",
+              "org.mockito.Mockito.*",
+              "org.mockito.ArgumentMatchers.*",
+              "org.mockito.Answers.*"
+            ],
+            "filteredTypes": [
+              "java.awt.*",
+              "com.sun.*",
+              "sun.*",
+              "jdk.*",
+              "org.graalvm.*",
+              "io.micrometer.shaded.*"
+            ],
+            "importOrder": ["java", "javax", "com", "org"],
+            "matchCase": "firstLetter",
+            "lazyResolveTextEdit": {
+              "enabled": true
+            },
+            "postfix": {
+              "enabled": true
+            },
+            "chain": {
+              "enabled": true
+            }
+          },
+          "foldingRange": {
+            "enabled": true
+          },
+          "selectionRange": {
+            "enabled": true
+          },
+          "semanticHighlighting": {
+            "enabled": true
+          },
+          "codeGeneration": {
+            "hashCodeEquals": {
+              "useJava7Objects": true,
+              "useInstanceof": true
+            },
+            "useBlocks": true,
+            "generateComments": false,
+            "toString": {
+              "template": "${object.className} [${member.name()}=${member.value}, ${otherMembers}]",
+              "codeStyle": "STRING_CONCATENATION",
+              "skipNullValues": false,
+              "listArrayContents": true,
+              "limitElements": 0
+            },
+            "insertionLocation": "afterCursor"
+          },
+          "inlayHints": {
+            "parameterNames": {
+              "enabled": "all",
+              "exclusions": []
+            }
+          },
+          "compile": {
+            "nullAnalysis": {
+              "mode": "automatic",
+              "nonnull": [],
+              "nullable": []
+            }
+          },
+          "sources": {
+            "organizeImports": {
+              "starThreshold": 99,
+              "staticStarThreshold": 99
+            }
+          },
+          "references": {
+            "includeAccessors": true,
+            "includeDecompiledSources": true
+          },
+          "typeHierarchy": {
+            "lazyLoad": false
+          },
+          "codeAction": {
+            "sortMembers": {
+              "avoidVolatileChanges": true
+            }
+          },
+          "templates": {
+            "fileHeader": [],
+            "typeComment": []
+          },
+          "cleanup": {
+            "actionsOnSave": []
           }
         }
       }
