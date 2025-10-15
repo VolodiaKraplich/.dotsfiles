@@ -1,0 +1,5 @@
+
+[audacious]
+convert_backslash=TRUE
+generic_title_format=${title}${?artist: - ${artist}}
+net_buffer_kb=320
