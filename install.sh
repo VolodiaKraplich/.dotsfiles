@@ -11,7 +11,7 @@ NC='\033[0m'
 
 # Configuration
 STOW_ARGS="-R --adopt --no-folding"
-DEBUG=false
+DEBUG=true
 
 # Define packages to install
 # Format: "package:target" or just "package" for $HOME
@@ -33,11 +33,11 @@ show_help() {
 Usage: $0 [OPTIONS]
 
 Options:
-  --debug      Enable debug output
   --dry-run    Show what would be done
   --help, -h   Show this help
 
 Uses GNU Stow with --no-folding to create file-level symlinks.
+Debug output is always enabled.
 EOF
 }
 
@@ -126,7 +126,6 @@ dry_run() {
 # Parse arguments
 while [[ $# -gt 0 ]]; do
     case $1 in
-        --debug) DEBUG=true; shift ;;
         --dry-run) dry_run; exit 0 ;;
         --help|-h) show_help; exit 0 ;;
         *) error "Unknown option: $1"; exit 1 ;;
