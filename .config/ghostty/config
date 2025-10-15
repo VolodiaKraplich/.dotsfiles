@@ -10,4 +10,5 @@ cursor-style = block
 cursor-style-blink = false
 
 window-theme = dark
+confirm-close-surface = false
 background-opacity = 1.0
