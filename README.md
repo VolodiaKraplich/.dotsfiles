@@ -24,7 +24,7 @@ A clean and organized collection of configuration files for a modern development
 1. **Clone the repository:**
 
    ```bash
-   git clone https://github.com/your-username/dotfiles.git
+   git clone https://github.com/VolodiaKraplich/dotfiles.git
    cd dotfiles
    ```
 
