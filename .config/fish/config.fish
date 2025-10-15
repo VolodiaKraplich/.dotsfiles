@@ -2,6 +2,16 @@
 # Starship Prompt Initialization
 # ------------------------------------------------------------------------------
 starship init fish | source
+
+# ------------------------------------------------------------------------------
+# Zoxide Initialization
+# ------------------------------------------------------------------------------
+if type -q zoxide
+    zoxide init fish | source
+    # Alias cd to use zoxide
+    alias cd z
+end
+
 # ------------------------------------------------------------------------------
 # General Fish Shell Settings
 # ------------------------------------------------------------------------------
@@ -43,7 +53,7 @@ set -g fish_pager_color_description 6c7086
 set -x MANPAGER "sh -c 'col -bx | bat -l man -p'"
 
 # Isolate command history for containers to avoid polluting the host's history
-if test "$container" = "podman" -o "$container" = "docker" -o -n "$DISTROBOX_ENTER_PATH"
+if test "$container" = podman -o "$container" = docker -o -n "$DISTROBOX_ENTER_PATH"
     set -g fish_history ""
 end
 
@@ -59,9 +69,9 @@ alias .... "cd ../../.."
 # Modern Unix command replacements
 if type -q eza
     alias ls "eza -al --color=always --group-directories-first --icons" # full listing
-    alias l "eza -l --color=always --group-directories-first --icons"    # long format
-    alias la "eza -a --color=always --group-directories-first --icons"   # all files
-    alias lt "eza -aT --color=always --group-directories-first --icons"  # tree view
+    alias l "eza -l --color=always --group-directories-first --icons" # long format
+    alias la "eza -a --color=always --group-directories-first --icons" # all files
+    alias lt "eza -aT --color=always --group-directories-first --icons" # tree view
     alias tree "eza --tree"
 end
 
@@ -77,7 +87,7 @@ alias wget "wget -c"
 
 # Git aliases
 if type -q git
-    alias g "git"
+    alias g git
     alias ga "git add"
     alias gc "git commit"
     alias gco "git checkout"
@@ -96,12 +106,13 @@ end
 # Function for `!!` (repeat previous command) and `!$` (last argument)
 # This brings useful functionality from Bash to Fish.
 function __history_previous_command
-  switch (commandline -t)
-    case "!"
-      commandline -t $history[1]; commandline -f repaint
-    case "*"
-      commandline -i !
-  end
+    switch (commandline -t)
+        case "!"
+            commandline -t $history[1]
+            commandline -f repaint
+        case "*"
+            commandline -i !
+    end
 end
 
 function __history_previous_command_arguments
@@ -115,7 +126,7 @@ function __history_previous_command_arguments
 end
 
 # Bind the functions to the ! and $ keys
-if [ "$fish_key_bindings" = "fish_vi_key_bindings" ]
+if [ "$fish_key_bindings" = fish_vi_key_bindings ]
     bind -Minsert ! __history_previous_command
     bind -Minsert '$' __history_previous_command_arguments
 else
@@ -138,15 +149,15 @@ end
 # ------------------------------------------------------------------------------
 
 # Settings for the "done" plugin (desktop notifications for long commands)
-set -g __done_min_cmd_duration 10000       # Notify after 10 seconds
-set -g __done_exclude '^git (?!push|pull|fetch)'  # Don't notify for most git commands
-set -g __done_notify_sound 0               # No sound with notifications
-set -g __done_notification_duration 3000   # How long notifications stay on screen (ms)
+set -g __done_min_cmd_duration 10000 # Notify after 10 seconds
+set -g __done_exclude '^git (?!push|pull|fetch)' # Don't notify for most git commands
+set -g __done_notify_sound 0 # No sound with notifications
+set -g __done_notification_duration 3000 # How long notifications stay on screen (ms)
 set -U __done_notification_urgency_level low # Set urgency level to low
 
 # pnpm
 set -gx PNPM_HOME "/home/volodia/.local/share/pnpm"
 if not string match -q -- $PNPM_HOME $PATH
-  set -gx PATH "$PNPM_HOME" $PATH
+    set -gx PATH "$PNPM_HOME" $PATH
 end
 # pnpm end
