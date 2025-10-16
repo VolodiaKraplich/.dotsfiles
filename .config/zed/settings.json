@@ -192,6 +192,12 @@
       "format_on_save": "on",
       "tab_size": 2
     },
+    "Kotlin": {
+      "language_servers": ["kotlin-lsp", "!kotlin-language-server", "..."],
+      "format_on_save": "on",
+      "preferred_line_length": 100,
+      "tab_size": 2
+    },
     "JSONC": {
       "format_on_save": "on",
       "tab_size": 2
