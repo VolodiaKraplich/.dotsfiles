@@ -67,7 +67,7 @@ stow -D .config
 
 Install required fonts:
 
-- **[Maple Mono](https://font.subf.dev/en/):** Main programming font
+- **[Maple Mono](https://font.subf.dev/en/):** Main font
 - **Noto Color Emoji:** Emoji support in terminals
 
 ## 🤝 Contributing
