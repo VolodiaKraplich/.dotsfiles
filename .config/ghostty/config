@@ -1,4 +1,4 @@
-theme = Maple-Dark
+theme = catppuccin-mocha
 mouse-hide-while-typing = true
 quit-after-last-window-closed = true
 
