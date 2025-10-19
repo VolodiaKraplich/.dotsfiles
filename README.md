@@ -22,7 +22,7 @@ sudo pacman -S chezmoi
 ### Installation
 
 ```bash
-chezmoi apply VolodiaKraplich
+chezmoi init --apply VolodiaKraplich
 ```
 
 That's it!
