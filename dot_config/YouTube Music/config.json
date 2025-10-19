@@ -1,0 +1,103 @@
+{
+	"window-size": {
+		"width": 1919,
+		"height": 1199
+	},
+	"window-maximized": true,
+	"window-position": {
+		"x": 0,
+		"y": 120
+	},
+	"url": "https://music.youtube.com/watch?v=1aokooixKIo&list=RDAMVMgiLpYG11qxQ&index=0",
+	"options": {
+		"tray": true,
+		"appVisible": true,
+		"autoUpdates": false,
+		"alwaysOnTop": false,
+		"hideMenu": true,
+		"hideMenuWarned": true,
+		"startAtLogin": false,
+		"disableHardwareAcceleration": false,
+		"removeUpgradeButton": false,
+		"restartOnConfigChanges": false,
+		"trayClickPlayPause": false,
+		"autoResetAppCache": false,
+		"resumeOnStart": false,
+		"likeButtons": "",
+		"proxy": "",
+		"startingPage": "",
+		"overrideUserAgent": false,
+		"usePodcastParticipantAsArtist": false,
+		"themes": [
+			"~/.config/YouTube Music/mocha.css"
+		]
+	},
+	"plugins": {
+		"notifications": {},
+		"video-toggle": {
+			"mode": "custom"
+		},
+		"precise-volume": {
+			"globalShortcuts": {}
+		},
+		"discord": {
+			"enabled": false,
+			"autoReconnect": true,
+			"activityTimeoutEnabled": true,
+			"activityTimeoutTime": 600000,
+			"playOnYouTubeMusic": true,
+			"hideGitHubButton": true,
+			"hideDurationLeft": false,
+			"statusDisplayType": 2,
+			"listenAlong": true
+		},
+		"synced-lyrics": {
+			"enabled": true,
+			"preciseTiming": true,
+			"showLyricsEvenIfInexact": true,
+			"showTimeCodes": false,
+			"defaultTextString": "♪",
+			"lineEffect": "fancy",
+			"romanization": true
+		},
+		"sponsorblock": {
+			"enabled": true
+		},
+		"equalizer": {
+			"enabled": true
+		},
+		"downloader": {
+			"enabled": false
+		},
+		"auth-proxy-adapter": {
+			"enabled": false
+		},
+		"bypass-age-restrictions": {
+			"enabled": true
+		},
+		"album-color-theme": {
+			"enabled": true,
+			"ratio": 1
+		},
+		"album-actions": {
+			"enabled": false
+		},
+		"ambient-mode": {
+			"enabled": true
+		},
+		"compact-sidebar": {
+			"enabled": true
+		},
+		"audio-compressor": {
+			"enabled": false
+		},
+		"tuna-obs": {
+			"enabled": false
+		}
+	},
+	"__internal__": {
+		"migrations": {
+			"version": "3.11.0"
+		}
+	}
+}

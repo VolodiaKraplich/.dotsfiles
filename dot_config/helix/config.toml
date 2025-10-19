@@ -1,0 +1,120 @@
+theme = "catppuccin_mocha"
+
+# =============================================================================
+# Editor Configuration
+# =============================================================================
+
+[editor]
+bufferline = "multiple"
+color-modes = true
+cursorline = true
+cursorcolumn = false
+idle-timeout = 0
+line-number = "relative"
+mouse = true
+scrolloff = 999
+scroll-lines = 3
+true-color = true
+undercurl = true
+auto-completion = true
+auto-format = true
+auto-save = false
+completion-trigger-len = 2
+completion-timeout = 250
+preview-completion-insert = true
+completion-replace = false
+auto-info = true
+popup-border = "all"
+text-width = 100
+workspace-lsp-roots = []
+default-line-ending = "lf"
+
+[editor.cursor-shape]
+insert = "bar"
+normal = "block"
+select = "underline"
+
+[editor.file-picker]
+hidden = false
+git-global = false
+git-ignore = true
+follow-symlinks = true
+deduplicate-links = true
+parents = true
+ignore = true
+git-exclude = true
+max-depth = 5
+
+[editor.indent-guides]
+character = "│"
+render = true
+skip-levels = 1
+
+[editor.gutters]
+layout = ["diff", "diagnostics", "line-numbers", "spacer"]
+
+[editor.lsp]
+enable = true
+display-inlay-hints = true
+display-messages = true
+auto-signature-help = true
+display-signature-help-docs = true
+goto-reference-include-declaration = true
+snippets = true
+
+[editor.soft-wrap]
+enable = true
+max-wrap = 25
+max-indent-retain = 0
+wrap-indicator = "↪ "
+
+[editor.auto-pairs]
+'(' = ")"
+'{' = "}"
+'[' = "]"
+'"' = '"'
+'`' = "`"
+'<' = ">"
+
+[editor.search]
+smart-case = true
+wrap-around = true
+
+[editor.whitespace.render]
+space = "none"
+tab = "none"
+newline = "none"
+
+[editor.whitespace.characters]
+space = "·"
+nbsp = "⍽"
+nnbsp = "␣"
+tab = "→"
+newline = "⏎"
+tabpad = "·"
+
+# =============================================================================
+# Statusline Configuration
+# =============================================================================
+
+[editor.statusline]
+mode.normal = "NORMAL"
+mode.insert = "INSERT"
+mode.select = "SELECT"
+left = [
+  "mode",
+  "spacer",
+  "version-control",
+  "spacer",
+  "file-name",
+  "file-modification-indicator",
+]
+right = [
+  "spinner",
+  "diagnostics",
+  "spacer",
+  "position",
+  "position-percentage",
+  "spacer",
+  "file-type",
+]
