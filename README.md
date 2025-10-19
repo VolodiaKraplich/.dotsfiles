@@ -1,69 +1,33 @@
 # 🏠 Dotfiles
 
-A clean and organized collection of configuration files for a modern development environment. Managed with GNU Stow for easy installation and maintenance.
+A clean and organized collection of configuration files for a modern environment. Managed with Chezmoi for easy installation and maintenance.
 
 ## 🚀 Quick Start
 
 ### Prerequisites
 
-- **GNU Stow** - Package manager for dotfiles
+- **Chezmoi** - Package manager for dotfiles
 
-  ```bash
-  # Ubuntu/Debian
-  sudo apt install stow
+```bash
+# Ubuntu/Debian
+sudo apt install chezmoi
 
-  # macOS
-  brew install stow
+# macOS
+brew install chezmoi
 
-  # Arch Linux
-  sudo pacman -S stow
-  ```
+# Arch Linux
+sudo pacman -S chezmoi
+```
 
 ### Installation
 
-1. **Clone the repository:**
-
-   ```bash
-   git clone https://github.com/VolodiaKraplich/dotfiles.git
-   cd dotfiles
-   ```
-
-2. **Run the installer:**
-   ```bash
-   ./install.sh
-   ```
-
-That's it! The script will automatically:
-
-- Install all configuration files to appropriate locations
-- Handle existing files safely with `--adopt` flag
-- Create necessary directories if they don't exist
-
-### Reinstallation
-
-To update or reinstall configurations:
-
 ```bash
-./install.sh
+chezmoi apply VolodiaKraplich
 ```
 
-The script uses stow's restow (`-R`) feature to cleanly reinstall configurations.
+That's it!
 
 ## 🔧 Troubleshooting
-
-### Stow Conflicts
-
-If you encounter stow conflicts:
-
-```bash
-# Remove existing symlinks
-stow -D .config
-
-# Reinstall
-./install.sh
-```
-
-### Missing Fonts
 
 Install required fonts:
 
