@@ -1,4 +1,17 @@
 {
+  // === Extentions ===
+  "auto_install_extensions": {
+    "maple-theme": true,
+    "catppuccin-icons": true,
+    "java": true,
+    "dockerfile": true,
+    "git-firefly": true,
+    "vue": true,
+    "make": true,
+    "kotlin": true,
+    "tombi": true
+  },
+
   // === AI ===
   "disable_ai": true,
   "features": {
@@ -32,8 +45,8 @@
   // === THEME ===
   "theme": {
     "mode": "system",
-    "light": "Catppuccin Latte",
-    "dark": "Catppuccin Mocha"
+    "light": "Maple Light",
+    "dark": "Maple Dark"
   },
   "icon_theme": "Catppuccin Mocha",
 
