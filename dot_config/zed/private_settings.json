@@ -18,6 +18,7 @@
     "edit_prediction_provider": "copilot"
   },
   "agent": {
+    "dock": "left",
     "always_allow_tool_actions": true,
     "inline_assistant_model": {
       "provider": "zed.dev",
@@ -81,6 +82,9 @@
     "quick_actions": true,
     "selections_menu": true,
     "code_actions": true
+  },
+  "project_panel": {
+    "dock": "right"
   },
 
   // === TERMINAL ===
