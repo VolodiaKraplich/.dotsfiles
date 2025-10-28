@@ -1,0 +1,26 @@
+# Output: title.mp4
+--output '%(title)s.%(ext)s'
+
+# SELECT FORMATS
+--format 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best'
+
+# MERGE TO MP4
+--merge-output-format mp4
+
+# METADATA
+--embed-metadata
+
+# THUMBNAIL
+--embed-thumbnail
+
+# SUBTITLES
+--write-subs --sub-langs all --embed-subs
+
+# SAFETY
+--ignore-errors
+--no-overwrites
+--restrict-filenames
+--windows-filenames
+
+# AUDIO-ONLY
+--alias get-audio,-A "-f bestaudio --extract-audio --audio-format m4a --audio-quality 0 --embed-metadata --embed-thumbnail"
