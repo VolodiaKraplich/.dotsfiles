@@ -189,36 +189,168 @@ parameterNames = true
 rangeVariableTypes = true
 
 # =============================================================================
-# TypeScript Language Server
 # =============================================================================
 
-[language-server.typescript-language-server]
-command = "typescript-language-server"
+[language-server.vtsls]
+command = "vtsls"
 args = ["--stdio"]
 
-[language-server.typescript-language-server.config]
-hostInfo = "helix"
+[language-server.vtsls.config]
+javascript.tsserver.maxTsServerMemory = 8092
+javascript.inlayHints.parameterNames.enabled = "all"
+javascript.inlayHints.parameterNames.suppressWhenArgumentMatchesName = false
+javascript.inlayHints.parameterTypes.enabled = true
+javascript.inlayHints.variableTypes.enabled = true
+javascript.inlayHints.variableTypes.suppressWhenTypeMatchesName = false
+javascript.inlayHints.propertyDeclarationTypes.enabled = true
+javascript.inlayHints.functionLikeReturnTypes.enabled = true
+javascript.inlayHints.enumMemberValues.enabled = true
+javascript.suggest.autoImports = true
+javascript.suggest.completeFunctionCalls = true
+javascript.suggest.includeCompletionsForModuleExports = true
+javascript.suggest.includeCompletionsWithInsertText = true
+javascript.updateImportsOnFileMove.enabled = "always"
+javascript.preferences.importModuleSpecifier = "relative"
+javascript.preferences.quoteStyle = "single"
+typescript.tsserver.maxTsServerMemory = 8092
+typescript.inlayHints.parameterNames.enabled = "all"
+typescript.inlayHints.parameterNames.suppressWhenArgumentMatchesName = false
+typescript.inlayHints.parameterTypes.enabled = true
+typescript.inlayHints.variableTypes.enabled = true
+typescript.inlayHints.variableTypes.suppressWhenTypeMatchesName = false
+typescript.inlayHints.propertyDeclarationTypes.enabled = true
+typescript.inlayHints.functionLikeReturnTypes.enabled = true
+typescript.inlayHints.enumMemberValues.enabled = true
+typescript.suggest.autoImports = true
+typescript.suggest.completeFunctionCalls = true
+typescript.suggest.includeCompletionsForModuleExports = true
+typescript.suggest.includeCompletionsWithInsertText = true
+typescript.updateImportsOnFileMove.enabled = "always"
+typescript.preferences.importModuleSpecifier = "relative"
+typescript.preferences.quoteStyle = "single"
 
-[language-server.typescript-language-server.config.typescript.inlayHints]
-includeInlayParameterNameHints = "all"
-includeInlayParameterNameHintsWhenArgumentMatchesName = true
-includeInlayFunctionParameterTypeHints = true
-includeInlayVariableTypeHints = true
-includeInlayVariableTypeHintsWhenTypeMatchesName = true
-includeInlayPropertyDeclarationTypeHints = true
-includeInlayFunctionLikeReturnTypeHints = true
-includeInlayEnumMemberValueHints = true
+# =============================================================================
+# ESLint Language Server
+# =============================================================================
 
-[language-server.typescript-language-server.config.javascript.inlayHints]
-includeInlayParameterNameHints = "all"
-includeInlayParameterNameHintsWhenArgumentMatchesName = true
-includeInlayFunctionParameterTypeHints = true
-includeInlayVariableTypeHints = true
-includeInlayVariableTypeHintsWhenTypeMatchesName = true
-includeInlayPropertyDeclarationTypeHints = true
-includeInlayFunctionLikeReturnTypeHints = true
-includeInlayEnumMemberValueHints = true
+[language-server.eslint]
+command = "vscode-eslint-language-server"
+args = ["--stdio"]
 
+[language-server.eslint.config]
+workingDirectory.mode = "auto"
+codeActionOnSave.enable = true
+codeActionOnSave.mode = "all"
+format.enable = true
+
+# =============================================================================
+# Tailwind CSS Language Server
+# =============================================================================
+
+[language-server.tailwind-ls]
+command = "tailwindcss-language-server"
+args = ["--stdio"]
+
+# =============================================================================
+# Java Language Server (jdtls)
+# =============================================================================
+
+[language-server.jdtls]
+command = "jdtls"
+
+[language-server.jdtls.config]
+bundles = []
+java.errors.incompleteClasspath.severity = "warning"
+java.configuration.updateBuildConfiguration = "automatic"
+java.trace.server = "off"
+java.import.gradle.enabled = true
+java.import.gradle.wrapper.enabled = true
+java.import.gradle.offline.enabled = false
+java.import.maven.enabled = true
+java.import.maven.offline.enabled = false
+java.import.exclusions = [
+  "**/node_modules/**",
+  "**/.metadata/**",
+  "**/archetype-resources/**",
+  "**/META-INF/maven/**",
+  "/**/test/**"
+]
+java.jdt.ls.lombokSupport.enabled = true
+java.jdt.ls.protobufSupport.enabled = false
+java.referencesCodeLens.enabled = true
+java.signatureHelp.enabled = true
+java.signatureHelp.description.enabled = true
+java.implementationsCodeLens.enabled = true
+java.format.enabled = true
+java.format.comments.enabled = true
+java.format.onType.enabled = true
+java.saveActions.organizeImports = true
+java.autobuild.enabled = true
+java.maxConcurrentBuilds = 1
+java.completion.enabled = true
+java.completion.guessMethodArguments = true
+java.completion.favoriteStaticMembers = [
+  "org.junit.Assert.*",
+  "org.junit.Assume.*",
+  "org.junit.jupiter.api.Assertions.*",
+  "org.junit.jupiter.api.Assumptions.*",
+  "org.junit.jupiter.api.DynamicContainer.*",
+  "org.junit.jupiter.api.DynamicTest.*",
+  "org.mockito.Mockito.*",
+  "org.mockito.ArgumentMatchers.*",
+  "org.mockito.Answers.*"
+]
+java.completion.filteredTypes = [
+  "java.awt.*",
+  "com.sun.*",
+  "sun.*",
+  "jdk.*",
+  "org.graalvm.*",
+  "io.micrometer.shaded.*"
+]
+java.completion.importOrder = ["java", "javax", "com", "org"]
+java.completion.matchCase = "firstLetter"
+java.completion.lazyResolveTextEdit.enabled = true
+java.completion.postfix.enabled = true
+java.completion.chain.enabled = true
+java.foldingRange.enabled = true
+java.selectionRange.enabled = true
+java.semanticHighlighting.enabled = true
+java.codeGeneration.hashCodeEquals.useJava7Objects = true
+java.codeGeneration.hashCodeEquals.useInstanceof = true
+java.codeGeneration.useBlocks = true
+java.codeGeneration.generateComments = false
+java.codeGeneration.toString.template = "${object.className} [${member.name()}=${member.value}, ${otherMembers}]"
+java.codeGeneration.toString.codeStyle = "STRING_CONCATENATION"
+java.codeGeneration.toString.skipNullValues = false
+java.codeGeneration.toString.listArrayContents = true
+java.codeGeneration.toString.limitElements = 0
+java.codeGeneration.insertionLocation = "afterCursor"
+java.inlayHints.parameterNames.enabled = "all"
+java.inlayHints.parameterNames.exclusions = []
+java.compile.nullAnalysis.mode = "automatic"
+java.compile.nullAnalysis.nonnull = []
+java.compile.nullAnalysis.nullable = []
+java.sources.organizeImports.starThreshold = 99
+java.sources.organizeImports.staticStarThreshold = 99
+java.references.includeAccessors = true
+java.references.includeDecompiledSources = true
+java.typeHierarchy.lazyLoad = false
+java.codeAction.sortMembers.avoidVolatileChanges = true
+java.templates.fileHeader = []
+java.templates.typeComment = []
+java.cleanup.actionsOnSave = []
+
+# =============================================================================
+# Kotlin Language Server
+# =============================================================================
+
+[language-server.kotlin-lsp]
+command = "kotlin-language-server"
+
+# =============================================================================
+# Vue Language Server
+# =============================================================================
 
 [language-server.vue]
 command = "vue-language-server"
@@ -238,36 +370,53 @@ ruff.lineLength = 100
 ruff.extendSelect = ["I"]
 
 # =============================================================================
+# Ruff Language Server (additional for Python)
+# =============================================================================
+
+[language-server.ruff]
+command = "ruff"
+args = ["server"]
+
+[language-server.ruff.config.settings]
+exclude = ["*"]
+
+# =============================================================================
 # Language Overrides
 # =============================================================================
 
 [[language]]
 name = "rust"
+language-servers = ["rust-analyzer"]
 auto-format = true
 indent = { tab-width = 2, unit = "  " }
 
 [[language]]
 name = "go"
+language-servers = ["gopls"]
 auto-format = true
 indent = { tab-width = 2, unit = "\t" }
 
 [[language]]
 name = "typescript"
+language-servers = ["vtsls", "eslint", "tailwind-ls"]
 auto-format = true
 indent = { tab-width = 2, unit = "  " }
 
 [[language]]
 name = "tsx"
+language-servers = ["vtsls", "eslint", "tailwind-ls"]
 auto-format = true
 indent = { tab-width = 2, unit = "  " }
 
 [[language]]
 name = "javascript"
+language-servers = ["vtsls", "eslint"]
 auto-format = true
 indent = { tab-width = 2, unit = "  " }
 
 [[language]]
 name = "jsx"
+language-servers = ["vtsls", "eslint"]
 auto-format = true
 indent = { tab-width = 2, unit = "  " }
 
@@ -290,15 +439,29 @@ text-width = 100
 
 [[language]]
 name = "python"
+language-servers = ["pylsp", "ruff"]
 auto-format = true
-indent = { tab-width = 2, unit = "    " }
+indent = { tab-width = 4, unit = "    " }
 
 [[language]]
 name = "vue"
+language-servers = ["vue"]
 auto-format = true
 indent = { tab-width = 2, unit = "  " }
 
 [[language]]
 name = "toml"
+auto-format = true
+indent = { tab-width = 2, unit = "  " }
+
+[[language]]
+name = "java"
+language-servers = ["jdtls"]
+auto-format = true
+indent = { tab-width = 2, unit = "  " }
+
+[[language]]
+name = "kotlin"
+language-servers = ["kotlin-lsp"]
 auto-format = true
 indent = { tab-width = 2, unit = "  " }
