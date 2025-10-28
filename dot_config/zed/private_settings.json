@@ -1,340 +1,327 @@
 {
-  // === Extentions ===
+  // === Extensions ===
   "auto_install_extensions": {
-    "maple-theme": true,
     "catppuccin-icons": true,
-    "java": true,
     "dockerfile": true,
     "git-firefly": true,
-    "vue": true,
-    "make": true,
+    "java": true,
     "kotlin": true,
-    "tombi": true
+    "make": true,
+    "maple-theme": true,
+    "tombi": true,
+    "vue": true
   },
 
   // === AI ===
-  "disable_ai": true,
+  "agent": {
+    "always_allow_tool_actions": true,
+    "default_model": {
+      "model": "claude-3-7-sonnet",
+      "provider": "zed.dev"
+    },
+    "dock": "left",
+    "inline_assistant_model": {
+      "model": "gemini-2.5-flash",
+      "provider": "zed.dev"
+    }
+  },
+  "audio": {
+    "experimental.auto_speaker_volume": true,
+    "experimental.denoise": true,
+    "experimental.rodio_audio": true
+  },
+  "disable_ai": false,
   "features": {
     "edit_prediction_provider": "copilot"
   },
-  "agent": {
-    "dock": "left",
-    "always_allow_tool_actions": true,
-    "inline_assistant_model": {
-      "provider": "zed.dev",
-      "model": "gemini-2.5-flash"
-    },
-    "default_model": {
-      "provider": "zed.dev",
-      "model": "claude-3-7-sonnet"
-    }
-  },
 
-  // === CORE EDITOR ===
+  // === Core Editor ===
+  "auto_signature_help": true,
   "base_keymap": "VSCode",
   "buffer_font_family": "Maple Mono",
+  "buffer_font_features": {
+    "calt": true
+  },
   "buffer_font_size": 16.0,
+  "cursor_shape": "bar",
+  "current_line_highlight": "gutter",
+  "format_on_save": "off",
+  "indent_guides": { "enabled": true },
+  "relative_line_numbers": false,
+  "show_completion_documentation": true,
+  "show_completions_on_input": true,
+  "show_signature_help_after_edits": true,
+  "tab_size": 2,
   "ui_font_family": "Maple Mono",
   "ui_font_size": 16.0,
-  "cursor_shape": "bar",
-  "tab_size": 2,
-  "show_completions_on_input": true,
-  "show_completion_documentation": true,
-  "auto_signature_help": true,
-  "show_signature_help_after_edits": true,
 
-  // === THEME ===
-  "theme": {
-    "mode": "system",
-    "light": "Maple Light",
-    "dark": "Maple Dark"
-  },
+  // === Theme ===
   "icon_theme": "Catppuccin Mocha",
+  "theme": {
+    "dark": "Maple Dark",
+    "light": "Maple Light",
+    "mode": "system"
+  },
 
-  // === UI ELEMENTS ===
+  // === UI Elements ===
+  "bottom_dock_layout": "full",
+  "inlay_hints": {
+    "edit_debounce_ms": 300,
+    "enabled": true,
+    "scroll_debounce_ms": 50,
+    "show_background": false,
+    "show_other_hints": true,
+    "show_parameter_hints": true,
+    "show_type_hints": true,
+    "toggle_on_modifiers_press": {
+      "alt": true
+    }
+  },
+  "inline_code_actions": false,
   "minimap": {
-    "show": "auto",
-    "thumb": "always"
+    "show": "never",
+    "current_line_highlight": "gutter"
+  },
+  "preview_tabs": {
+    "enable_preview_from_code_navigation": true,
+    "enabled": false
+  },
+  "project_panel": {
+    "auto_reveal_entries": false,
+    "dock": "right",
+    "hide_root": true,
+    "sticky_scroll": true
   },
   "scrollbar": {
     "axes": {
       "horizontal": true,
       "vertical": null
     },
-    "show": "auto",
     "cursors": true,
     "git_diff": true,
     "search_results": true,
+    "selected_symbol": true,
     "selected_text": true,
-    "selected_symbol": true
+    "show": "auto"
   },
-  "inlay_hints": {
-    "enabled": true,
-    "show_type_hints": true,
-    "show_parameter_hints": true,
-    "show_other_hints": true,
-    "show_background": false,
-    "edit_debounce_ms": 300,
-    "scroll_debounce_ms": 50
+  "tab_bar": {
+    "show": true,
+    "show_nav_history_buttons": false,
+    "show_tab_bar_buttons": true
+  },
+  "tabs": {
+    "git_status": true
+  },
+  "title_bar": {
+    "show_branch_icon": true,
+    "show_sign_in": false,
+    "show_user_picture": true
   },
   "toolbar": {
-    "breadcrumbs": true,
-    "quick_actions": true,
-    "selections_menu": true,
-    "code_actions": true
+    "agent_review": true,
+    "breadcrumbs": false,
+    "code_actions": false,
+    "quick_actions": false,
+    "selections_menu": true
   },
-  "project_panel": {
-    "dock": "right"
-  },
+  "use_system_path_prompts": false,
+  "use_system_prompts": false,
 
-  // === TERMINAL ===
+  // === Terminal ===
+  "load_direnv": "shell_hook",
   "terminal": {
+    "env": {
+      "GIT_EDITOR": "zed -w",
+      "VISUAL": "zed -w"
+    },
     "font_family": "Maple Mono"
   },
-  "load_direnv": "shell_hook",
 
-  // === PRIVACY ===
+  // === Privacy ===
   "auto_update": false,
   "telemetry": {
     "diagnostics": false,
     "metrics": false
   },
 
-  // === LANGUAGES ===
+  // === Languages ===
   "languages": {
     "Go": {
-      "language_servers": ["gopls"],
-      "format_on_save": "on",
       "formatter": "language_server",
-      "preferred_line_length": 100,
       "hard_tabs": true,
-      "tab_size": 2,
       "inlay_hints": {
         "enabled": true,
-        "show_type_hints": true,
+        "show_other_hints": true,
         "show_parameter_hints": true,
-        "show_other_hints": true
-      }
-    },
-    "Rust": {
-      "language_servers": ["rust-analyzer"],
-      "format_on_save": "on",
-      "formatter": [
-        { "code_action": "source.organizeImports" },
-        { "code_action": "source.fixAll" },
-        "language_server"
-      ],
+        "show_type_hints": true
+      },
+      "language_servers": ["gopls"],
       "preferred_line_length": 100,
-      "hard_tabs": false,
-      "tab_size": 2,
-      "show_edit_predictions": true,
-      "inlay_hints": {
-        "enabled": true,
-        "show_type_hints": true,
-        "show_parameter_hints": true,
-        "show_other_hints": true
-      }
+      "tab_size": 2
     },
     "Java": {
-      "language_servers": ["jdtls"],
-      "format_on_save": "on",
       "formatter": [
-        { "code_action": "source.organizeImports" },
+        {
+          "code_action": "source.organizeImports"
+        },
         "language_server"
       ],
       "hard_tabs": false,
-      "tab_size": 2,
       "inlay_hints": {
         "enabled": true,
-        "show_type_hints": true,
+        "show_other_hints": true,
         "show_parameter_hints": true,
-        "show_other_hints": true
-      }
+        "show_type_hints": true
+      },
+      "language_servers": ["jdtls"],
+      "tab_size": 2
     },
     "JavaScript": {
+      "formatter": [
+        {
+          "code_action": "source.addMissingImports"
+        },
+        {
+          "code_action": "source.organizeImports"
+        },
+        {
+          "code_action": "source.fixAll.eslint"
+        },
+        "language_server"
+      ],
+      "inlay_hints": {
+        "enabled": true,
+        "show_other_hints": true,
+        "show_parameter_hints": true,
+        "show_type_hints": true
+      },
       "language_servers": ["vtsls", "!typescript-language-server", "..."],
-      "format_on_save": "on",
-      "formatter": [
-        { "code_action": "source.addMissingImports" },
-        { "code_action": "source.organizeImports" },
-        { "code_action": "source.fixAll.eslint" },
-        "language_server"
-      ],
       "preferred_line_length": 100,
-      "tab_size": 2,
-      "inlay_hints": {
-        "enabled": true,
-        "show_type_hints": true,
-        "show_parameter_hints": true,
-        "show_other_hints": true
-      }
-    },
-    "TypeScript": {
-      "language_servers": [
-        "tailwindcss-language-server",
-        "vtsls",
-        "!typescript-language-server",
-        "..."
-      ],
-      "format_on_save": "on",
-      "formatter": [
-        { "code_action": "source.addMissingImports" },
-        { "code_action": "source.organizeImports" },
-        { "code_action": "source.fixAll.eslint" },
-        "language_server"
-      ],
-      "preferred_line_length": 100,
-      "tab_size": 2,
-      "inlay_hints": {
-        "enabled": true,
-        "show_type_hints": true,
-        "show_parameter_hints": true,
-        "show_other_hints": true
-      }
-    },
-    "TSX": {
-      "language_servers": [
-        "tailwindcss-language-server",
-        "vtsls",
-        "!typescript-language-server",
-        "..."
-      ],
-      "format_on_save": "on",
-      "formatter": [
-        { "code_action": "source.addMissingImports" },
-        { "code_action": "source.organizeImports" },
-        { "code_action": "source.fixAll.eslint" },
-        "language_server"
-      ],
-      "preferred_line_length": 100,
-      "tab_size": 2,
-      "inlay_hints": {
-        "enabled": true,
-        "show_type_hints": true,
-        "show_parameter_hints": true,
-        "show_other_hints": true
-      }
+      "tab_size": 2
     },
     "JSON": {
-      "format_on_save": "on",
+      "tab_size": 2
+    },
+    "JSONC": {
       "tab_size": 2
     },
     "Kotlin": {
       "language_servers": ["kotlin-lsp", "!kotlin-language-server", "..."],
-      "format_on_save": "on",
       "preferred_line_length": 100,
-      "tab_size": 2
-    },
-    "JSONC": {
-      "format_on_save": "on",
-      "tab_size": 2
-    },
-    "YAML": {
-      "format_on_save": "on",
       "tab_size": 2
     },
     "Markdown": {
-      "format_on_save": "on",
       "preferred_line_length": 100,
       "soft_wrap": "preferred_line_length"
+    },
+    "Rust": {
+      "formatter": [
+        {
+          "code_action": "source.organizeImports"
+        },
+        {
+          "code_action": "source.fixAll"
+        },
+        "language_server"
+      ],
+      "hard_tabs": false,
+      "inlay_hints": {
+        "enabled": true,
+        "show_other_hints": true,
+        "show_parameter_hints": true,
+        "show_type_hints": true
+      },
+      "language_servers": ["rust-analyzer"],
+      "preferred_line_length": 100,
+      "show_edit_predictions": true,
+      "tab_size": 2
+    },
+    "TSX": {
+      "formatter": [
+        {
+          "code_action": "source.addMissingImports"
+        },
+        {
+          "code_action": "source.organizeImports"
+        },
+        {
+          "code_action": "source.fixAll.eslint"
+        },
+        "language_server"
+      ],
+      "inlay_hints": {
+        "enabled": true,
+        "show_other_hints": true,
+        "show_parameter_hints": true,
+        "show_type_hints": true
+      },
+      "language_servers": [
+        "tailwindcss-language-server",
+        "vtsls",
+        "!typescript-language-server",
+        "..."
+      ],
+      "preferred_line_length": 100,
+      "tab_size": 2
+    },
+    "TypeScript": {
+      "formatter": [
+        {
+          "code_action": "source.addMissingImports"
+        },
+        {
+          "code_action": "source.organizeImports"
+        },
+        {
+          "code_action": "source.fixAll.eslint"
+        },
+        "language_server"
+      ],
+      "inlay_hints": {
+        "enabled": true,
+        "show_other_hints": true,
+        "show_parameter_hints": true,
+        "show_type_hints": true
+      },
+      "language_servers": [
+        "tailwindcss-language-server",
+        "vtsls",
+        "!typescript-language-server",
+        "..."
+      ],
+      "preferred_line_length": 100,
+      "tab_size": 2
+    },
+    "YAML": {
+      "tab_size": 2
     }
   },
 
   // === LSP ===
   "lsp": {
-    "ruff": {
-      "initialization_options": {
-        "settings": {
-          "exclude": ["*"]
-        }
-      }
-    },
-    "vtsls": {
-      "settings": {
-        "javascript": {
-          "tsserver": {
-            "maxTsServerMemory": 8092
-          },
-          "inlayHints": {
-            "parameterNames": {
-              "enabled": "all",
-              "suppressWhenArgumentMatchesName": false
-            },
-            "parameterTypes": { "enabled": true },
-            "variableTypes": {
-              "enabled": true,
-              "suppressWhenTypeMatchesName": false
-            },
-            "propertyDeclarationTypes": { "enabled": true },
-            "functionLikeReturnTypes": { "enabled": true },
-            "enumMemberValues": { "enabled": true }
-          },
-          "suggest": {
-            "autoImports": true,
-            "completeFunctionCalls": true,
-            "includeCompletionsForModuleExports": true,
-            "includeCompletionsWithInsertText": true
-          },
-          "updateImportsOnFileMove": { "enabled": "always" },
-          "preferences": {
-            "importModuleSpecifier": "relative",
-            "quoteStyle": "single"
-          }
-        },
-        "typescript": {
-          "tsserver": {
-            "maxTsServerMemory": 8092
-          },
-          "inlayHints": {
-            "parameterNames": {
-              "enabled": "all",
-              "suppressWhenArgumentMatchesName": false
-            },
-            "parameterTypes": { "enabled": true },
-            "variableTypes": {
-              "enabled": true,
-              "suppressWhenTypeMatchesName": false
-            },
-            "propertyDeclarationTypes": { "enabled": true },
-            "functionLikeReturnTypes": { "enabled": true },
-            "enumMemberValues": { "enabled": true }
-          },
-          "suggest": {
-            "autoImports": true,
-            "completeFunctionCalls": true,
-            "includeCompletionsForModuleExports": true,
-            "includeCompletionsWithInsertText": true
-          },
-          "updateImportsOnFileMove": { "enabled": "always" },
-          "preferences": {
-            "importModuleSpecifier": "relative",
-            "quoteStyle": "single"
-          }
-        }
-      }
-    },
     "eslint": {
       "settings": {
-        "workingDirectory": { "mode": "auto" },
         "codeActionOnSave": {
           "enable": true,
           "mode": "all"
         },
-        "format": { "enable": true }
+        "format": {
+          "enable": true
+        },
+        "workingDirectory": {
+          "mode": "auto"
+        }
       }
     },
     "gopls": {
       "initialization_options": {
-        "staticcheck": true,
-        "completeUnimported": true,
-        "matcher": "Fuzzy",
-        "usePlaceholders": true,
-        "experimentalPostfixCompletions": true,
         "analyses": {
           "unusedparams": true,
           "unusedvariable": true,
           "useany": true
         },
+        "completeUnimported": true,
+        "experimentalPostfixCompletions": true,
         "hints": {
           "assignVariableTypes": true,
           "compositeLiteralFields": true,
@@ -344,217 +331,10 @@
           "parameterNames": true,
           "rangeVariableTypes": true
         },
-        "semanticTokens": true
-      }
-    },
-    "rust-analyzer": {
-      "initialization_options": {
-        "cargo": {
-          "allFeatures": true,
-          "buildScripts": {
-            "enable": true,
-            "rebuildOnSave": true,
-            "useRustcWrapper": true
-          },
-          "loadOutDirsFromCheck": true,
-          "autoreload": true,
-          "allTargets": true
-        },
-        "check": {
-          "command": "clippy",
-          "workspace": true,
-          "allTargets": true,
-          "extraArgs": [
-            "--",
-            "-W",
-            "clippy::all",
-            "-W",
-            "clippy::pedantic",
-            "-W",
-            "clippy::nursery",
-            "-W",
-            "clippy::cargo",
-            "-A",
-            "clippy::module_name_repetitions",
-            "-A",
-            "clippy::missing_errors_doc",
-            "-A",
-            "clippy::missing_panics_doc"
-          ]
-        },
-        "checkOnSave": true,
-        "completion": {
-          "addCallArgumentSnippets": true,
-          "addCallParenthesis": true,
-          "autoimport": { "enable": true },
-          "postfix": { "enable": true },
-          "privateEditable": { "enable": true },
-          "fullFunctionSignatures": { "enable": true },
-          "callable": { "snippets": "fill_arguments" },
-          "termSearch": {
-            "enable": true,
-            "fuel": 2000
-          }
-        },
-        "diagnostics": {
-          "enable": true,
-          "enableExperimental": true,
-          "disabled": ["unresolved-proc-macro", "unresolved-method"],
-          "styleLints": { "enable": true }
-        },
-        "hover": {
-          "actions": {
-            "debug": true,
-            "enable": true,
-            "gotoTypeDef": true,
-            "implementations": true,
-            "references": true,
-            "run": true
-          },
-          "documentation": {
-            "enable": true,
-            "keywords": { "enable": true }
-          },
-          "links": { "enable": true },
-          "memoryLayout": {
-            "enable": true,
-            "alignment": "hexadecimal",
-            "offset": "hexadecimal",
-            "size": "both"
-          },
-          "show": {
-            "enumVariants": 10,
-            "fields": 10,
-            "traitAssocItems": 10
-          }
-        },
-        "inlayHints": {
-          "bindingModeHints": { "enable": true },
-          "chainingHints": { "enable": true },
-          "closingBraceHints": {
-            "enable": true,
-            "minLines": 10
-          },
-          "closureCaptureHints": { "enable": true },
-          "closureReturnTypeHints": { "enable": "with_block" },
-          "closureStyle": "impl_fn",
-          "discriminantHints": { "enable": "fieldless" },
-          "expressionAdjustmentHints": { "enable": "never" },
-          "genericParameterHints": {
-            "const": { "enable": true },
-            "lifetime": { "enable": true },
-            "type": { "enable": true }
-          },
-          "lifetimeElisionHints": {
-            "enable": "skip_trivial",
-            "useParameterNames": true
-          },
-          "maxLength": 30,
-          "parameterHints": { "enable": true },
-          "rangeExclusiveHints": { "enable": true },
-          "renderColons": true,
-          "typeHints": {
-            "enable": true,
-            "hideClosureInitialization": false,
-            "hideNamedConstructor": false
-          },
-          "implicitDrops": { "enable": false }
-        },
-        "lens": {
-          "debug": true,
-          "enable": true,
-          "implementations": true,
-          "location": "above_name",
-          "references": {
-            "adt": { "enable": true },
-            "enumVariant": { "enable": true },
-            "method": { "enable": true },
-            "trait": { "enable": true }
-          },
-          "run": true
-        },
-        "procMacro": {
-          "enable": true,
-          "attributes": { "enable": true },
-          "ignored": {
-            "leptos_macro": ["server"]
-          }
-        },
-        "imports": {
-          "granularity": {
-            "enforce": false,
-            "group": "crate"
-          },
-          "group": { "enable": true },
-          "merge": { "glob": true },
-          "prefix": "by_crate"
-        },
-        "assist": {
-          "emitMustUse": true,
-          "expressionFillDefault": "default",
-          "preferSelf": true,
-          "termSearch": {
-            "borrowcheck": true,
-            "fuel": 2000
-          }
-        },
-        "cachePriming": {
-          "enable": true,
-          "numThreads": 0
-        },
-        "lru": { "capacity": 256 },
-        "semanticHighlighting": {
-          "nonStandardTokens": true,
-          "operator": {
-            "enable": true,
-            "specialization": { "enable": true }
-          },
-          "punctuation": {
-            "enable": true,
-            "specialization": { "enable": true }
-          },
-          "strings": { "enable": true }
-        },
-        "references": {
-          "excludeImports": false,
-          "excludeTests": false
-        },
-        "runnables": {
-          "extraArgs": ["--release"],
-          "extraTestBinaryArgs": ["--show-output", "--nocapture"]
-        },
-        "workspace": {
-          "symbol": {
-            "search": {
-              "scope": "workspace_and_dependencies",
-              "kind": "all_symbols",
-              "limit": 256,
-              "excludeImports": false
-            }
-          }
-        },
-        "rustfmt": {
-          "extraArgs": [],
-          "overrideCommand": null,
-          "rangeFormatting": { "enable": false }
-        },
-        "joinLines": {
-          "joinAssignments": true,
-          "joinElseIf": true,
-          "removeTrailingComma": true,
-          "unwrapTrivialBlock": true
-        },
-        "highlightRelated": {
-          "breakPoints": { "enable": true },
-          "closureCaptures": { "enable": true },
-          "exitPoints": { "enable": true },
-          "references": { "enable": true },
-          "yieldPoints": { "enable": true }
-        },
-        "signatureInfo": {
-          "detail": "full",
-          "documentation": { "enable": true }
-        }
+        "matcher": "Fuzzy",
+        "semanticTokens": true,
+        "staticcheck": true,
+        "usePlaceholders": true
       }
     },
     "jdtls": {
@@ -563,67 +343,45 @@
       },
       "settings": {
         "java": {
-          "errors": {
-            "incompleteClasspath": { "severity": "warning" }
+          "autobuild": {
+            "enabled": true
           },
-          "configuration": {
-            "updateBuildConfiguration": "automatic"
+          "cleanup": {
+            "actionsOnSave": []
           },
-          "trace": { "server": "off" },
-          "import": {
-            "gradle": {
-              "enabled": true,
-              "wrapper": { "enabled": true },
-              "version": null,
-              "home": null,
-              "java": { "home": null },
-              "offline": { "enabled": false },
-              "arguments": null,
-              "jvmArguments": null,
-              "user": { "home": null }
-            },
-            "maven": {
-              "enabled": true,
-              "offline": { "enabled": false }
-            },
-            "exclusions": [
-              "**/node_modules/**",
-              "**/.metadata/**",
-              "**/archetype-resources/**",
-              "**/META-INF/maven/**",
-              "/**/test/**"
-            ]
-          },
-          "jdt": {
-            "ls": {
-              "lombokSupport": { "enabled": true },
-              "protobufSupport": { "enabled": false }
+          "codeAction": {
+            "sortMembers": {
+              "avoidVolatileChanges": true
             }
           },
-          "referencesCodeLens": { "enabled": true },
-          "signatureHelp": {
-            "enabled": true,
-            "description": { "enabled": true }
-          },
-          "implementationsCodeLens": { "enabled": true },
-          "format": {
-            "enabled": true,
-            "settings": {
-              "url": null,
-              "profile": null
+          "codeGeneration": {
+            "generateComments": false,
+            "hashCodeEquals": {
+              "useInstanceof": true,
+              "useJava7Objects": true
             },
-            "comments": { "enabled": true },
-            "onType": { "enabled": true }
+            "insertionLocation": "afterCursor",
+            "toString": {
+              "codeStyle": "STRING_CONCATENATION",
+              "limitElements": 0,
+              "listArrayContents": true,
+              "skipNullValues": false,
+              "template": "${object.className} [${member.name()}=${member.value}, ${otherMembers}]"
+            },
+            "useBlocks": true
           },
-          "saveActions": {
-            "organizeImports": true
+          "compile": {
+            "nullAnalysis": {
+              "mode": "automatic",
+              "nonnull": [],
+              "nullable": []
+            }
           },
-          "contentProvider": { "preferred": null },
-          "autobuild": { "enabled": true },
-          "maxConcurrentBuilds": 1,
           "completion": {
+            "chain": {
+              "enabled": true
+            },
             "enabled": true,
-            "guessMethodArguments": true,
             "favoriteStaticMembers": [
               "org.junit.Assert.*",
               "org.junit.Assume.*",
@@ -643,30 +401,79 @@
               "org.graalvm.*",
               "io.micrometer.shaded.*"
             ],
+            "guessMethodArguments": true,
             "importOrder": ["java", "javax", "com", "org"],
+            "lazyResolveTextEdit": {
+              "enabled": true
+            },
             "matchCase": "firstLetter",
-            "lazyResolveTextEdit": { "enabled": true },
-            "postfix": { "enabled": true },
-            "chain": { "enabled": true }
+            "postfix": {
+              "enabled": true
+            }
           },
-          "foldingRange": { "enabled": true },
-          "selectionRange": { "enabled": true },
-          "semanticHighlighting": { "enabled": true },
-          "codeGeneration": {
-            "hashCodeEquals": {
-              "useJava7Objects": true,
-              "useInstanceof": true
+          "configuration": {
+            "updateBuildConfiguration": "automatic"
+          },
+          "contentProvider": {
+            "preferred": null
+          },
+          "errors": {
+            "incompleteClasspath": {
+              "severity": "warning"
+            }
+          },
+          "foldingRange": {
+            "enabled": true
+          },
+          "format": {
+            "comments": {
+              "enabled": true
             },
-            "useBlocks": true,
-            "generateComments": false,
-            "toString": {
-              "template": "${object.className} [${member.name()}=${member.value}, ${otherMembers}]",
-              "codeStyle": "STRING_CONCATENATION",
-              "skipNullValues": false,
-              "listArrayContents": true,
-              "limitElements": 0
+            "enabled": true,
+            "onType": {
+              "enabled": true
             },
-            "insertionLocation": "afterCursor"
+            "settings": {
+              "profile": null,
+              "url": null
+            }
+          },
+          "implementationsCodeLens": {
+            "enabled": true
+          },
+          "import": {
+            "exclusions": [
+              "**/node_modules/**",
+              "**/.metadata/**",
+              "**/archetype-resources/**",
+              "**/META-INF/maven/**",
+              "/**/test/**"
+            ],
+            "gradle": {
+              "arguments": null,
+              "enabled": true,
+              "home": null,
+              "java": {
+                "home": null
+              },
+              "jvmArguments": null,
+              "offline": {
+                "enabled": false
+              },
+              "user": {
+                "home": null
+              },
+              "version": null,
+              "wrapper": {
+                "enabled": true
+              }
+            },
+            "maven": {
+              "enabled": true,
+              "offline": {
+                "enabled": false
+              }
+            }
           },
           "inlayHints": {
             "parameterNames": {
@@ -674,12 +481,38 @@
               "exclusions": []
             }
           },
-          "compile": {
-            "nullAnalysis": {
-              "mode": "automatic",
-              "nonnull": [],
-              "nullable": []
+          "jdt": {
+            "ls": {
+              "lombokSupport": {
+                "enabled": true
+              },
+              "protobufSupport": {
+                "enabled": false
+              }
             }
+          },
+          "maxConcurrentBuilds": 1,
+          "references": {
+            "includeAccessors": true,
+            "includeDecompiledSources": true
+          },
+          "referencesCodeLens": {
+            "enabled": true
+          },
+          "saveActions": {
+            "organizeImports": true
+          },
+          "selectionRange": {
+            "enabled": true
+          },
+          "semanticHighlighting": {
+            "enabled": true
+          },
+          "signatureHelp": {
+            "description": {
+              "enabled": true
+            },
+            "enabled": true
           },
           "sources": {
             "organizeImports": {
@@ -687,20 +520,389 @@
               "staticStarThreshold": 99
             }
           },
-          "references": {
-            "includeAccessors": true,
-            "includeDecompiledSources": true
-          },
-          "typeHierarchy": { "lazyLoad": false },
-          "codeAction": {
-            "sortMembers": { "avoidVolatileChanges": true }
-          },
           "templates": {
             "fileHeader": [],
             "typeComment": []
           },
-          "cleanup": {
-            "actionsOnSave": []
+          "trace": {
+            "server": "off"
+          },
+          "typeHierarchy": {
+            "lazyLoad": false
+          }
+        }
+      }
+    },
+    "ruff": {
+      "initialization_options": {
+        "settings": {
+          "exclude": ["*"]
+        }
+      }
+    },
+    "rust-analyzer": {
+      "initialization_options": {
+        "assist": {
+          "emitMustUse": true,
+          "expressionFillDefault": "default",
+          "preferSelf": true,
+          "termSearch": {
+            "borrowcheck": true,
+            "fuel": 2000
+          }
+        },
+        "cargo": {
+          "allFeatures": true,
+          "allTargets": true,
+          "autoreload": true,
+          "buildScripts": {
+            "enable": true,
+            "rebuildOnSave": true,
+            "useRustcWrapper": true
+          },
+          "features": "all",
+          "loadOutDirsFromCheck": true
+        },
+        "check": {
+          "allTargets": true,
+          "command": "clippy",
+          "extraArgs": [
+            "--",
+            "-W",
+            "clippy::all",
+            "-W",
+            "clippy::pedantic",
+            "-W",
+            "clippy::nursery",
+            "-W",
+            "clippy::cargo",
+            "-A",
+            "clippy::module_name_repetitions",
+            "-A",
+            "clippy::missing_errors_doc",
+            "-A",
+            "clippy::missing_panics_doc"
+          ],
+          "workspace": false
+        },
+        "checkOnSave": false,
+        "completion": {
+          "addCallArgumentSnippets": true,
+          "addCallParenthesis": true,
+          "autoimport": {
+            "enable": true
+          },
+          "callable": {
+            "snippets": "fill_arguments"
+          },
+          "fullFunctionSignatures": {
+            "enable": true
+          },
+          "postfix": {
+            "enable": true
+          },
+          "privateEditable": {
+            "enable": true
+          },
+          "termSearch": {
+            "enable": true,
+            "fuel": 2000
+          }
+        },
+        "diagnostics": {
+          "disabled": ["unresolved-proc-macro", "unresolved-method"],
+          "enable": true,
+          "enableExperimental": true,
+          "styleLints": {
+            "enable": true
+          }
+        },
+        "highlightRelated": {
+          "breakPoints": {
+            "enable": true
+          },
+          "closureCaptures": {
+            "enable": true
+          },
+          "exitPoints": {
+            "enable": true
+          },
+          "references": {
+            "enable": true
+          },
+          "yieldPoints": {
+            "enable": true
+          }
+        },
+        "hover": {
+          "actions": {
+            "debug": true,
+            "enable": true,
+            "gotoTypeDef": true,
+            "implementations": true,
+            "references": true,
+            "run": true
+          },
+          "documentation": {
+            "enable": true,
+            "keywords": {
+              "enable": true
+            }
+          },
+          "links": {
+            "enable": true
+          },
+          "memoryLayout": {
+            "alignment": "hexadecimal",
+            "enable": true,
+            "offset": "hexadecimal",
+            "size": "both"
+          },
+          "show": {
+            "enumVariants": 10,
+            "fields": 10,
+            "traitAssocItems": 10
+          }
+        },
+        "imports": {
+          "granularity": {
+            "enforce": false,
+            "group": "crate"
+          },
+          "group": {
+            "enable": true
+          },
+          "merge": {
+            "glob": true
+          },
+          "prefix": "by_crate"
+        },
+        "inlayHints": {
+          "bindingModeHints": {
+            "enable": true
+          },
+          "chainingHints": {
+            "enable": true
+          },
+          "closingBraceHints": {
+            "enable": true,
+            "minLines": 10
+          },
+          "closureCaptureHints": {
+            "enable": true
+          },
+          "closureReturnTypeHints": {
+            "enable": "with_block"
+          },
+          "closureStyle": "impl_fn",
+          "discriminantHints": {
+            "enable": "fieldless"
+          },
+          "expressionAdjustmentHints": {
+            "enable": "never"
+          },
+          "genericParameterHints": {
+            "const": {
+              "enable": true
+            },
+            "lifetime": {
+              "enable": true
+            },
+            "type": {
+              "enable": true
+            }
+          },
+          "implicitDrops": {
+            "enable": false
+          },
+          "lifetimeElisionHints": {
+            "enable": "skip_trivial",
+            "useParameterNames": true
+          },
+          "maxLength": 30,
+          "parameterHints": {
+            "enable": true
+          },
+          "rangeExclusiveHints": {
+            "enable": true
+          },
+          "renderColons": true,
+          "typeHints": {
+            "enable": true,
+            "hideClosureInitialization": false,
+            "hideNamedConstructor": false
+          }
+        },
+        "joinLines": {
+          "joinAssignments": true,
+          "joinElseIf": true,
+          "removeTrailingComma": true,
+          "unwrapTrivialBlock": true
+        },
+        "lens": {
+          "debug": true,
+          "enable": true,
+          "implementations": true,
+          "location": "above_name",
+          "references": {
+            "adt": {
+              "enable": true
+            },
+            "enumVariant": {
+              "enable": true
+            },
+            "method": {
+              "enable": true
+            },
+            "trait": {
+              "enable": true
+            }
+          },
+          "run": true
+        },
+        "lru": {
+          "capacity": 256
+        },
+        "procMacro": {
+          "attributes": {
+            "enable": true
+          },
+          "enable": true,
+          "ignored": {
+            "leptos_macro": ["server"]
+          }
+        },
+        "references": {
+          "excludeImports": false,
+          "excludeTests": false
+        },
+        "runnables": {
+          "extraArgs": ["--release"],
+          "extraTestBinaryArgs": ["--show-output", "--nocapture"]
+        },
+        "rustfmt": {
+          "extraArgs": [],
+          "overrideCommand": null,
+          "rangeFormatting": {
+            "enable": false
+          }
+        },
+        "semanticHighlighting": {
+          "nonStandardTokens": true,
+          "operator": {
+            "enable": true,
+            "specialization": {
+              "enable": true
+            }
+          },
+          "punctuation": {
+            "enable": true,
+            "specialization": {
+              "enable": true
+            }
+          },
+          "strings": {
+            "enable": true
+          }
+        },
+        "signatureInfo": {
+          "detail": "full",
+          "documentation": {
+            "enable": true
+          }
+        },
+        "workspace": {
+          "symbol": {
+            "search": {
+              "excludeImports": false,
+              "kind": "all_symbols",
+              "limit": 256,
+              "scope": "workspace_and_dependencies"
+            }
+          }
+        }
+      }
+    },
+    "vtsls": {
+      "settings": {
+        "javascript": {
+          "inlayHints": {
+            "enumMemberValues": {
+              "enabled": true
+            },
+            "functionLikeReturnTypes": {
+              "enabled": true
+            },
+            "parameterNames": {
+              "enabled": "all",
+              "suppressWhenArgumentMatchesName": false
+            },
+            "parameterTypes": {
+              "enabled": true
+            },
+            "propertyDeclarationTypes": {
+              "enabled": true
+            },
+            "variableTypes": {
+              "enabled": true,
+              "suppressWhenTypeMatchesName": false
+            }
+          },
+          "preferences": {
+            "importModuleSpecifier": "relative",
+            "quoteStyle": "single"
+          },
+          "suggest": {
+            "autoImports": true,
+            "completeFunctionCalls": true,
+            "includeCompletionsForModuleExports": true,
+            "includeCompletionsWithInsertText": true
+          },
+          "tsserver": {
+            "maxTsServerMemory": 8092
+          },
+          "updateImportsOnFileMove": {
+            "enabled": "always"
+          }
+        },
+        "typescript": {
+          "inlayHints": {
+            "enumMemberValues": {
+              "enabled": true
+            },
+            "functionLikeReturnTypes": {
+              "enabled": true
+            },
+            "parameterNames": {
+              "enabled": "all",
+              "suppressWhenArgumentMatchesName": false
+            },
+            "parameterTypes": {
+              "enabled": true
+            },
+            "propertyDeclarationTypes": {
+              "enabled": true
+            },
+            "variableTypes": {
+              "enabled": true,
+              "suppressWhenTypeMatchesName": false
+            }
+          },
+          "preferences": {
+            "importModuleSpecifier": "relative",
+            "quoteStyle": "single"
+          },
+          "suggest": {
+            "autoImports": true,
+            "completeFunctionCalls": true,
+            "includeCompletionsForModuleExports": true,
+            "includeCompletionsWithInsertText": true
+          },
+          "tsserver": {
+            "maxTsServerMemory": 8092
+          },
+          "updateImportsOnFileMove": {
+            "enabled": "always"
           }
         }
       }
