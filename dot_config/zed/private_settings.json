@@ -1,13 +1,13 @@
 {
   // === Extensions ===
   "auto_install_extensions": {
-    "catppuccin-icons": true,
     "dockerfile": true,
     "git-firefly": true,
     "java": true,
     "kotlin": true,
     "make": true,
     "maple-theme": true,
+    "material-icon-theme": true,
     "tombi": true,
     "vue": true
   },
@@ -56,7 +56,7 @@
   "ui_font_size": 16.0,
 
   // === Theme ===
-  "icon_theme": "Catppuccin Mocha",
+  "icon_theme": "Material Icon Theme",
   "theme": {
     "dark": "Maple Dark",
     "light": "Maple Light",
@@ -121,7 +121,7 @@
     "quick_actions": false,
     "selections_menu": true
   },
-  "use_system_path_prompts": false,
+  "use_system_path_prompts": true,
   "use_system_prompts": false,
 
   // === Terminal ===
