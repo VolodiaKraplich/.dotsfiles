@@ -36,7 +36,7 @@
   },
 
   // === Core Editor ===
-  "auto_signature_help": true,
+  "auto_signature_help": false,
   "base_keymap": "VSCode",
   "buffer_font_family": "Maple Mono",
   "buffer_font_features": {
@@ -50,7 +50,7 @@
   "relative_line_numbers": false,
   "show_completion_documentation": true,
   "show_completions_on_input": true,
-  "show_signature_help_after_edits": true,
+  "show_signature_help_after_edits": false,
   "tab_size": 2,
   "ui_font_family": "Maple Mono",
   "ui_font_size": 16.0,
@@ -79,6 +79,7 @@
     "show": "never",
     "current_line_highlight": "gutter"
   },
+  "middle_click_paste": false,
   "preview_tabs": {
     "enable_preview_from_code_navigation": true,
     "enabled": false
@@ -135,7 +136,8 @@
   },
 
   // === Privacy ===
-  "auto_update": false,
+  "auto_update": true,
+  "restore_on_startup": "none",
   "telemetry": {
     "diagnostics": false,
     "metrics": false
