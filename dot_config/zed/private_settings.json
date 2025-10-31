@@ -13,6 +13,7 @@
   },
 
   // === AI ===
+  "disable_ai": false,
   "agent": {
     "always_allow_tool_actions": true,
     "default_model": {
@@ -25,12 +26,13 @@
       "provider": "zed.dev"
     }
   },
-  "audio": {
-    "experimental.auto_speaker_volume": true,
-    "experimental.denoise": true,
-    "experimental.rodio_audio": true
+  "context_servers": {
+    "mcp-server-github": {
+      "source": "extension",
+      "enabled": true,
+      "settings": {}
+    }
   },
-  "disable_ai": false,
   "features": {
     "edit_prediction_provider": "copilot"
   },
@@ -141,6 +143,12 @@
   "telemetry": {
     "diagnostics": false,
     "metrics": false
+  },
+  // === CALLING ===
+  "audio": {
+    "experimental.auto_speaker_volume": true,
+    "experimental.denoise": true,
+    "experimental.rodio_audio": true
   },
 
   // === Languages ===
