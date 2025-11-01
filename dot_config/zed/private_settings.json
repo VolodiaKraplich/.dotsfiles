@@ -66,6 +66,7 @@
   },
 
   // === UI Elements ===
+  "helix_mode": true,
   "bottom_dock_layout": "full",
   "inlay_hints": {
     "edit_debounce_ms": 300,
